@@ -91,6 +91,13 @@ my:echo_error() {
     echo "$(tput setab 1)$(tput setaf 0)${message}$(tput el)$(tput sgr0)"
 }
 
+#################################### CHECK #####################################
+
+my:command_exists () {
+    local command="$1"
+    type "${command}" &> /dev/null
+}
+
 
 ################################################################################
 
