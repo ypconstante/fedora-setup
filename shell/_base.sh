@@ -63,7 +63,10 @@ my:link_file() {
     local to="$2"
 
     rm -f "${to}" 2> /dev/null || sudo rm -f "${to}"
-    ln -s "${from}" "${to}" 2> /dev/null || sudo ln -s "${from}" "${to}"
+    ln "${from}" "${to}" 2> /dev/null \
+        || sudo ln "${from}" "${to}" 2> /dev/null \
+        || cp "${from}" "${to}" 2> /dev/null \
+        || sudo cp "${from}" "${to}"
 }
 
 my:run_files() {
