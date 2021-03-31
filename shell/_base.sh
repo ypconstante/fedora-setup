@@ -69,6 +69,31 @@ my:run_files() {
     sort -zn | xargs -0 -I '{}' bash '{}' \;
 }
 
+my:wait_file() {
+    local file="$1"
+    local time_waiting=0;
+
+    until [ -f "$file" ]; do
+        sleep 1
+        ((time_waiting++))
+        if [[ $time_waiting -eq 2 ]]; then
+            my:echo_without_line_break "Waiting file '$file' to be created "
+        elif [[ $time_waiting -gt 2 ]]; then
+            my:echo_without_line_break "#"
+        fi
+        if [[ $time_waiting -gt 20 ]]; then
+            echo ''
+            my_echo_error 'File still not created after 20 '
+            return 1
+        fi
+    done
+
+    if [[ $time_waiting -ge 2 ]]; then
+        echo ''
+        echo 'File created'
+    fi
+}
+
 
 ################################### INSTALL ###################################
 
@@ -160,6 +185,11 @@ my:echo_substep() {
 my:echo_error() {
     local message="$1"
     echo "$(tput setab 1)$(tput setaf 0)${message}$(tput el)$(tput sgr0)"
+}
+
+my:echo_without_line_break() {
+    local message="$1"
+    echo -n "$message"
 }
 
 #################################### CHECK #####################################
