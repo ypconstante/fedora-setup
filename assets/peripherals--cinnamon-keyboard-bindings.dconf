@@ -1,0 +1,59 @@
+[custom-keybindings/custom0]
+binding=['<Primary><Shift>Escape']
+command='gnome-system-monitor'
+name='gnome-system-monitor'
+
+[custom-keybindings/custom1]
+binding=['<Primary>q']
+command='true'
+name='disable shortcuts'
+
+[/]
+looking-glass-keybinding=@as []
+custom-list=['custom0', 'custom1']
+magnifier-zoom-in=@as []
+magnifier-zoom-out=@as []
+
+[media-keys]
+next=['XF86AudioNext', '<Primary>AudioPlay']
+screensaver=['<Super>l', 'XF86ScreenSaver']
+terminal=['<Super>t']
+area-screenshot=@as ['<Primary>Print']
+area-screenshot-clip=@as []
+screenshot=@as ['Print']
+screenshot-clip=@as []
+window-screenshot=@as ['<Alt>Print']
+window-screenshot-clip=@as []
+
+[wm]
+close=['<Alt>F4', '<Super>q']
+panel-run-dialog=['<Alt>F2', '<Super>r']
+
+minimize=['<Super>d']
+show-desktop=@as ['<Primary><Super>d']
+
+switch-to-workspace-left=['<Primary><Super>Left']
+switch-to-workspace-right=['<Primary><Super>Right']
+switch-to-workspace-up=['<Primary><Super>Up']
+switch-to-workspace-down=['<Primary><Super>Down']
+switch-to-workspace-1=['<Super>1']
+switch-to-workspace-2=['<Super>2']
+switch-to-workspace-3=['<Super>3']
+switch-to-workspace-4=['<Super>4']
+switch-panels=['<Super>Tab']
+move-to-workspace-left=['<Primary><Shift><Super>Left']
+move-to-workspace-right=['<Primary><Shift><Super>Right']
+move-to-workspace-1=['<Primary><Shift><Super>exclam']
+move-to-workspace-2=['<Primary><Shift><Super>at']
+move-to-workspace-3=['<Primary><Shift><Super>numbersign']
+move-to-workspace-4=['<Primary><Shift><Super>dollar']
+
+begin-move=@as []
+begin-resize=@as []
+push-snap-up=@as []
+push-snap-right=@as []
+push-snap-down=@as []
+push-snap-left=@as []
+toggle-recording=@as []
+toggle-maximized=@as []
+unmaximize=@as []

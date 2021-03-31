@@ -2,9 +2,8 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
-my:step_begin "install cli tools"
+my:step_begin "install xclip"
 my:dnf_install xclip
-my:dnf_install xdotool
 my:step_end
 
 my:step_begin "install tldr"
