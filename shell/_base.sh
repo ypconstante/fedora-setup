@@ -56,6 +56,26 @@ my:dnf_install() {
     my:echo_substep "Installed '$1'"
 }
 
+my:git_clone() {
+    local repository="$1"
+    local directory="$2"
+
+    if [ -d "${directory}" ]; then
+        local previous_dir="$PWD"
+        cd "${directory}"
+        my:echo_substep "Updating repo '${directory}'"
+        git remote set-url origin "${repository}"
+        if [ "$(git symbolic-ref --short -q HEAD)" ]; then
+            git pull --rebase
+        else
+            git fetch
+        fi
+        cd "$previous_dir"
+    else
+        git clone "${repository}" "${directory}"
+    fi
+}
+
 #################################### PRINT #####################################
 
 # my:file_run
