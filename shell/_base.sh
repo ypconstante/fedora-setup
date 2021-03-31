@@ -129,7 +129,6 @@ my:git_clone() {
 my:file_run_begin() {
     local file="$1"
     my:file_run_echo "FILE BEGIN: ${file}"
-    echo ''
 }
 
 my:file_run_end() {
@@ -199,8 +198,22 @@ my:command_exists () {
     type "${command}" &> /dev/null
 }
 
+my:should_skip_file() {
+    local path="$1"
+    local filename=$(basename "$path")
+
+    if [[ "$filename" == *"_de_"* ]]; then
+        local wanted_de=$(echo "$filename" | cut -d '.' -f 1 | rev | cut -d '_' -f 1 | rev)
+        local current_de="$DESKTOP_SESSION"
+
+        if [ "$wanted_de" != "$current_de" ]; then
+            echo "current desktop is ${current_de}"
+        fi
+    fi
+}
 
 ################################################################################
+
 
 my:file_run_begin "$CURRENT_SCRIPT"
 
@@ -209,3 +222,11 @@ function on_exit {
 }
 
 trap on_exit EXIT
+
+skip_cause=$(my:should_skip_file "$CURRENT_SCRIPT")
+if [ -n "$skip_cause" ]; then
+    echo "${skip_cause}, skipping"
+    exit 0
+else
+    echo ''
+fi

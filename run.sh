@@ -5,5 +5,6 @@
 ./shell/git.sh
 
 ./shell/terminal.sh
-./shell/de.sh
+./shell/desktop.sh
 ./shell/file-manager.sh
+./shell/sound.sh
