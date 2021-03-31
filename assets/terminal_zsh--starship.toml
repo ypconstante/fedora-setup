@@ -1,0 +1,29 @@
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$docker_context\
+$golang\
+$java\
+$nodejs\
+$python\
+$cmd_duration\
+$jobs\
+$line_break\
+$character\
+"""
+
+[directory]
+truncation_length = 0
+
+[git_branch]
+symbol = ""
+
+[git_status]
+ahead = "Λ${count}"
+diverged = "Λ${ahead_count} V${behind_count}"
+behind = "V${count}"

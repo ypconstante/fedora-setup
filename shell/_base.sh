@@ -30,9 +30,31 @@ source "${ASSETS_DIR}/base--env"
 
 #################################### FILE #####################################
 
+my:append_to_file_if_not_contains() {
+    local file="$1"
+    local content="$2"
+
+    my:create_file "$file"
+
+    if ! my:file_contains_line "$file" "$content"; then
+        if [ -w "$file" ]; then
+            echo "$content" | tee -a "$file" 1> /dev/null
+        else
+            echo "$content" | sudo tee -a "$file" 1> /dev/null
+        fi
+    fi
+}
+
+
 my:create_file() {
     local file="$1"
     touch "$file" 2> /dev/null || sudo touch "$file"
+}
+
+my:file_contains_line() {
+    local file="$1"
+    local content="$2"
+    grep -Fxq "$content" "$file"
 }
 
 my:link_file() {
