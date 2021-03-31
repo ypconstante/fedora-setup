@@ -22,7 +22,8 @@ set +e
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 export ASSETS_DIR=$(realpath ../assets)
-export CURRENT_SCRIPT="${BASH_SOURCE[1]}"
+export CURRENT_SCRIPT_PATH=$(realpath "${BASH_SOURCE[1]}")
+export CURRENT_SCRIPT=$(basename "$CURRENT_SCRIPT_PATH")
 
 source /etc/os-release
 
