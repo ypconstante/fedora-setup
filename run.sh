@@ -6,3 +6,4 @@
 
 ./shell/terminal.sh
 ./shell/de.sh
+./shell/file-manager.sh
