@@ -3,7 +3,7 @@
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
 if ! my:command_exists nemo; then
-    echo 'nome not installed, skipping'
+    echo 'nemo not installed, skipping'
     exit 0
 fi
 
