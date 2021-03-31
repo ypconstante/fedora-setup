@@ -26,7 +26,22 @@ export CURRENT_SCRIPT="${BASH_SOURCE[1]}"
 
 source /etc/os-release
 
-source "$ASSETS_DIR/base--env"
+source "${ASSETS_DIR}/base--env"
+
+#################################### FILE #####################################
+
+my:create_file() {
+    local file="$1"
+    touch "$file" 2> /dev/null || sudo touch "$file"
+}
+
+my:link_file() {
+    local from="$1"
+    local to="$2"
+
+    rm -f "${to}" 2> /dev/null || sudo rm -f "${to}"
+    ln -s "${from}" "${to}" 2> /dev/null || sudo ln -s "${from}" "${to}"
+}
 
 my:run_files() {
     sort -zn | xargs -0 -I '{}' bash '{}' \;
@@ -95,6 +110,11 @@ my:step_echo() {
 
 
 # my:echo
+my:echo_substep() {
+    local message="$1"
+    echo "$(tput bold)$(tput setaf 4)${message}$(tput el)$(tput sgr0)"
+}
+
 my:echo_error() {
     local message="$1"
     echo "$(tput setab 1)$(tput setaf 0)${message}$(tput el)$(tput sgr0)"

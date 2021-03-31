@@ -1,0 +1,5 @@
+# custom
+.venv
+.local
+.tool-versions
+TODO.md

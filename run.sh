@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
-./cli-tools.sh
-./terminal.sh
+./shell/cli-tools.sh
+./shell/git.sh
+./shell/terminal.sh
 ./shell/de.sh
