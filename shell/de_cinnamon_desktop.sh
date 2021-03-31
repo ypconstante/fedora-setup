@@ -84,3 +84,7 @@ jq 'setpath(["search-filesystem", "value"]; false)' < "$menu_config_file" \
     > "$menu_config_file.tmp"
 mv "$menu_config_file.tmp" "$menu_config_file"
 my:step_end
+
+my:step_begin "disable recent files"
+dconf write /org/cinnamon/desktop/privacy/remember-recent-files false
+my:step_end
