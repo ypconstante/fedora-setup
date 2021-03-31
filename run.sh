@@ -7,4 +7,5 @@
 ./shell/terminal.sh
 ./shell/desktop.sh
 ./shell/file-manager.sh
+./shell/peripherals.sh
 ./shell/sound.sh
