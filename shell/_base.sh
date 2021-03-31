@@ -32,6 +32,15 @@ my:run_files() {
     sort -zn | xargs -0 -I '{}' bash '{}' \;
 }
 
+
+################################### INSTALL ###################################
+
+my:dnf_install() {
+    my:echo_substep "Installing '$1'"
+    sudo dnf install -y -q "$@"
+    my:echo_substep "Installed '$1'"
+}
+
 #################################### PRINT #####################################
 
 # my:file_run
