@@ -81,6 +81,8 @@ jq 'setpath(["search-filesystem", "value"]; false)' < "$menu_config_file" \
     | jq 'setpath(["menu-custom", "value"]; true)' \
     | jq 'setpath(["menu-label", "value"]; "")' \
     | jq 'setpath(["menu-icon", "value"]; "start-here-symbolic")' \
+    | jq 'setpath(["show-places", "value"]; false)' \
+    | jq 'setpath(["show-recents", "value"]; false)' \
     > "$menu_config_file.tmp"
 mv "$menu_config_file.tmp" "$menu_config_file"
 my:step_end
