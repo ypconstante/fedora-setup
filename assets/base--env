@@ -9,13 +9,15 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 # Non standard
 export XDG_LIB_HOME="${HOME}/.local/lib"
 
-# Fix applications to respect XDG
+# ASDF
 export ASDF_DIR="${XDG_DATA_HOME}/asdf"
 export ASDF_CONFIG_FILE="${XDG_CONFIG_HOME}/asdf"
 export ASDF_DATA_DIR="${XDG_LIB_HOME}/asdf"
+export ASDF_PATHS="${ASDF_DATA_DIR}/shims:${XDG_DATA_HOME}/asdf/bin"
+
+# Fix applications to respect XDG
 export ZDOTDIR="${XDG_DATA_HOME}/zsh"
 
 # Path
 export DEFAULT_PATH="${PATH}"
-export ASDF_PATHS="${ASDF_DATA_DIR}/shims:${XDG_DATA_HOME}/asdf/bin"
 export PATH="${ASDF_PATHS}:${DEFAULT_PATH}:${HOME}/.local/bin"
