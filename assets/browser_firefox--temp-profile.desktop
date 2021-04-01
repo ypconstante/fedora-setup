@@ -1,13 +1,12 @@
 [Desktop Entry]
 Version=1.0
-Name=Firefox Web Browser - Temporary
-Comment=Browse the World Wide Web
+Name=Firefox - Temporary
+Comment=Browse the Web
 GenericName=Web Browser
-Keywords=Internet;WWW;Browser;Web;Explorer;
+Keywords=web;browser;internet;
 Exec=firefox-temp
 Terminal=false
-X-MultipleArgs=false
 Type=Application
 Icon=firefox
-Categories=GNOME;GTK;Network;WebBrowser;
+Categories=Network;WebBrowser;
 StartupNotify=true
