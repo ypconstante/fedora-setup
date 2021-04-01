@@ -5,6 +5,7 @@
 ./shell/git.sh
 
 ./shell/terminal.sh
+./shell/bluetooth.sh
 ./shell/desktop.sh
 ./shell/file-manager.sh
 ./shell/peripherals.sh

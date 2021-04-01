@@ -107,6 +107,12 @@ my:dnf_install() {
     my:echo_substep "Installed '$1'"
 }
 
+my:dnf_remove() {
+    my:echo_substep "Removing '$1'"
+    sudo dnf remove -y -q "$@"
+    my:echo_substep "Removed '$1'"
+}
+
 my:git_clone() {
     local repository="$1"
     local directory="$2"
