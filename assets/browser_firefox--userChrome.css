@@ -1,0 +1,107 @@
+#nav-bar {
+    --toolbar-field-focus-border-color: var(--lwt-toolbar-field-border-color);
+}
+
+/* hide titlebar */
+#titlebar-buttonbox {
+    overflow: hidden;
+}
+
+/* hide tabs */
+#TabsToolbar {
+    visibility: collapse !important;
+}
+
+/* improve urlbar ui */
+#urlbar[breakout][breakout-extend] > #urlbar-input-container,
+#urlbar-input-container {
+    height: var(--urlbar-height) !important;
+    padding-block: 0px !important;
+    padding-inline: 0px !important;
+    transition: none !important;
+    border-radius: var(--toolbarbutton-border-radius) !important;
+}
+
+#urlbar[breakout][breakout-extend] {
+    top: calc((var(--urlbar-toolbar-height) - var(--urlbar-height)) / 2) !important;
+    left: 0 !important;
+    width: 100% !important;
+}
+
+#urlbar[breakout][breakout-extend] > #urlbar-background {
+    box-shadow: 0 1px 4px rgba(0,0,0,.05) !important;
+}
+
+#urlbar[breakout][breakout-extend] > #urlbar-input-container {
+    border: 1px solid var(--toolbar-field-focus-border-color) !important;
+}
+
+#urlbar[breakout][breakout-extend][open] > #urlbar-input-container {
+    border-bottom: 1px solid transparent !important;
+    border-radius: var(--toolbarbutton-border-radius) var(--toolbarbutton-border-radius) 0 0 !important;
+}
+
+/* hide 'search with' text */
+.urlbarView-results > [type="search"] .urlbarView-title-separator,
+.urlbarView-results > [type="search"] .urlbarView-action {
+    visibility: collapse !important;
+}
+
+/* hide toolbar border */
+#navigator-toolbox {
+    border: none !important;
+}
+
+/* reduce bookmarks bar size */
+#PersonalToolbar {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* reduce search bar size */
+.findbar-container {
+    padding-block: 0 !important;
+}
+
+.findbar-textbox,
+.findbar-find-previous,
+.findbar-find-next {
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    border-radius: 0 !important;
+}
+
+.findbar-button {
+    padding: 4px 4px 4px 4px !important;
+    border-radius: 0 !important;
+}
+
+/* change browser frame color */
+window:not([privatebrowsingmode]) .browserContainer {
+    background-color: #323234;
+}
+
+/* hide sidebar header */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+    visibility: collapse !important;
+}
+
+/* hide resizer */
+#sidebar-box + #sidebar-splitter {
+    display: none !important;
+}
+
+#sidebar-box {
+    border-right: 1px solid ThreeDShadow;
+}
+
+/* sidebar fixed width */
+#sidebar-box {
+    min-width: 320px !important;
+    max-width: 320px !important;
+}
+
+/* hide tree tab when only one tab open on window */
+#main-window[title^="[1]"] #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
+    visibility: collapse !important;
+}

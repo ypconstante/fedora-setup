@@ -1,0 +1,26 @@
+body * {
+    scrollbar-width: thin;
+}
+
+@-moz-document url("about:home"), url("about:newtab") {
+    body,
+    .top-site-outer .top-site-icon {
+        background-color: #323234 !important;
+    }
+
+    .top-site-outer .tile {
+        box-shadow: none !important;
+    }
+
+    .top-site-outer .title .icon {
+        display: none !important;
+    }
+
+    .top-site-outer .title.pinned span {
+        padding: 0 !important;
+    }
+
+    [data-section-id="topstories"] {
+        display: none !important;
+    }
+}

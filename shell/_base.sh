@@ -49,7 +49,14 @@ my:append_to_file_if_not_contains() {
 
 my:create_file() {
     local file="$1"
+    my:create_parent_dirs "${file}"
     touch "$file" 2> /dev/null || sudo touch "$file"
+}
+
+my:create_parent_dirs() {
+    local file="$1"
+    local parents=$(dirname "${file}")
+    mkdir -p "${parents}" 2> /dev/null || sudo mkdir -p "${parents}"
 }
 
 my:file_contains_line() {
@@ -61,6 +68,8 @@ my:file_contains_line() {
 my:link_file() {
     local from="$1"
     local to="$2"
+
+    my:create_parent_dirs "${to}"
 
     rm -f "${to}" 2> /dev/null || sudo rm -f "${to}"
     ln "${from}" "${to}" 2> /dev/null \
