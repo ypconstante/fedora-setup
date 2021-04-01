@@ -125,21 +125,36 @@ my:dnf_remove() {
 my:git_clone() {
     local repository="$1"
     local directory="$2"
+    local version="${3:-}"
 
     if [ -d "${directory}" ]; then
         local previous_dir="$PWD"
         cd "${directory}"
         my:echo_substep "Updating repo '${directory}'"
         git remote set-url origin "${repository}"
-        if [ "$(git symbolic-ref --short -q HEAD)" ]; then
+        local current_branch=$(git symbolic-ref --short -q HEAD)
+        if [ -n "$current_branch" ]; then
+            echo "Updating branch $current_branch"
             git pull --rebase
         else
+            echo "Fetching changes"
             git fetch
         fi
         cd "$previous_dir"
     else
         git clone "${repository}" "${directory}"
     fi
+
+    if [ "$version" == "last-tag" ]; then
+        my:git_checkout_last_tag "${directory}"
+    fi
+}
+
+my:git_checkout_last_tag() {
+    local directory="$1"
+    local last_tag=$(git -C "$directory" describe --abbrev=0 --tags)
+    echo "Changing to version '${last_tag}'"
+    git -C "$directory" -c advice.detachedHead=false checkout "${last_tag}"
 }
 
 #################################### PRINT #####################################
