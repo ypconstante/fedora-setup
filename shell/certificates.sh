@@ -45,10 +45,10 @@ curl -L \
 unzip $certificate_chain_compressed_file -d $certificate_chain_dir
 
 certificate_chain_p7b_file=$(find $certificate_chain_dir -name '*.p7b')
-certificate_chain_crt_file="$certificate_chain_dir/caixa-economica-chain.crt"
+certificate_chain_crt_file="${target_dir}/caixa.crt"
 
-openssl pkcs7 -print_certs -in "$certificate_chain_p7b_file" -out "$certificate_chain_crt_file"
-sudo mv "$certificate_chain_crt_file" "${target_dir}"
+sudo openssl pkcs7 -print_certs -in "$certificate_chain_p7b_file" -out "$certificate_chain_crt_file"
+sudo restorecon -v "$certificate_chain_crt_file"
 rm -rf "$certificate_chain_compressed_file" "$certificate_chain_dir" "$certificate_chain_p7b_file"
 my:step_end
 
