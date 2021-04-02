@@ -49,7 +49,7 @@ certificate_chain_crt_file="$certificate_chain_dir/caixa-economica-chain.crt"
 
 openssl pkcs7 -print_certs -in "$certificate_chain_p7b_file" -out "$certificate_chain_crt_file"
 sudo mv "$certificate_chain_crt_file" "${target_dir}"
-rm "$certificate_chain_compressed_file" "$certificate_chain_dir"
+rm -rf "$certificate_chain_compressed_file" "$certificate_chain_dir" "$certificate_chain_p7b_file"
 my:step_end
 
 my:step_begin "update certificates"
