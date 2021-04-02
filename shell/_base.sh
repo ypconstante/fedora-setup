@@ -133,9 +133,15 @@ my:asdf_install_and_set_global() {
 
     source "${ASDF_DIR}/asdf.sh"
 
+    # avoid permission error with plugins using current dir as temporary dir
+    previous_dir="$PWD"
+    cd /tmp
+
     my:echo_substep "Installing version $version"
     asdf install "$plugin" "$version"
     asdf global "$plugin" "$version"
+
+    cd "$previous_dir"
 }
 
 my:git_clone() {
