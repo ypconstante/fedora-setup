@@ -111,15 +111,11 @@ my:wait_file() {
 ################################### INSTALL ###################################
 
 my:dnf_install() {
-    my:echo_substep "Installing '$1'"
     sudo dnf install -y -q "$@"
-    my:echo_substep "Installed '$1'"
 }
 
 my:dnf_remove() {
-    my:echo_substep "Removing '$1'"
     sudo dnf remove -y -q "$@"
-    my:echo_substep "Removed '$1'"
 }
 
 my:git_clone() {
@@ -261,6 +257,4 @@ skip_cause=$(my:should_skip_file "$CURRENT_SCRIPT")
 if [ -n "$skip_cause" ]; then
     echo "${skip_cause}, skipping"
     exit 0
-else
-    echo ''
 fi
