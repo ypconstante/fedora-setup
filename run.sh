@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+./shell/prepare.sh
 ./shell/environment.sh
 ./shell/cli-tools.sh
 ./shell/git.sh
