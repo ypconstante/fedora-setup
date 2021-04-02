@@ -9,3 +9,7 @@ my:step_end
 my:step_begin "config asdf"
 my:link_file "$ASSETS_DIR/dev_asdf--rc" "$ASDF_CONFIG_FILE"
 my:step_end
+
+my:step_begin "update plugins"
+asdf plugin-update --all
+my:step_end
