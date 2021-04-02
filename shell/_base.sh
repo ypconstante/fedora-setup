@@ -118,6 +118,26 @@ my:dnf_remove() {
     sudo dnf remove -y -q "$@"
 }
 
+my:asdf_add_plugin() {
+    local plugin="$1"
+
+    source "${ASDF_DIR}/asdf.sh"
+
+    asdf plugin-add "${plugin}"
+    asdf list-all "${plugin}" 1> /dev/null
+}
+
+my:asdf_install_and_set_global() {
+    local plugin="$1"
+    local version="$2"
+
+    source "${ASDF_DIR}/asdf.sh"
+
+    my:echo_substep "Installing version $version"
+    asdf install "$plugin" "$version"
+    asdf global "$plugin" "$version"
+}
+
 my:git_clone() {
     local repository="$1"
     local directory="$2"

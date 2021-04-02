@@ -15,6 +15,11 @@ export ASDF_CONFIG_FILE="${XDG_CONFIG_HOME}/asdf"
 export ASDF_DATA_DIR="${XDG_LIB_HOME}/asdf"
 export ASDF_PATHS="${ASDF_DATA_DIR}/shims:${XDG_DATA_HOME}/asdf/bin"
 
+# Python
+export PIP_REQUIRE_VIRTUALENV=true
+export AUTOSWITCH_VIRTUAL_ENV_DIR=".local/venv"
+export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
+
 # Fix applications to respect XDG
 export ZDOTDIR="${XDG_DATA_HOME}/zsh"
 
