@@ -27,3 +27,6 @@ symbol = ""
 ahead = "Λ${count}"
 diverged = "Λ${ahead_count} V${behind_count}"
 behind = "V${count}"
+
+[nodejs]
+symbol = "⬢ "
