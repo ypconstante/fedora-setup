@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-source "$(dirname "$0")/_base.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
 install_dir=$XDG_DATA_HOME/JetBrains/Toolbox
 installer_compressed_file=/tmp/jetbrains-toolbox.tar.gz
