@@ -114,6 +114,16 @@ my:dnf_install() {
     sudo dnf install -y -q "$@"
 }
 
+my:dnf_add_key() {
+    local url="$1"
+    sudo rpm -v --import "$url"
+}
+
+my:dnf_add_repo() {
+    local url="$1"
+    sudo dnf config-manager --add-repo "$url"
+}
+
 my:dnf_remove() {
     sudo dnf remove -y -q "$@"
 }
