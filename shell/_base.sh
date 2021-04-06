@@ -118,6 +118,10 @@ my:dnf_remove() {
     sudo dnf remove -y -q "$@"
 }
 
+my:flatpak_install() {
+    flatpak install -y flathub "$@"
+}
+
 my:asdf_add_plugin() {
     local plugin="$1"
 
