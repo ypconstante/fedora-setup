@@ -5,7 +5,6 @@ source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 my:step_begin "remove unused packages"
 sudo dnf remove -y \
     hexchat \
-    libreoffice-help-en \
     paper-icon-theme \
     pidgin \
     rhythmbox \
