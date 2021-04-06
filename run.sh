@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+./package-managers.sh
 ./prepare.sh
 ./environment.sh
 ./cli-tools.sh
