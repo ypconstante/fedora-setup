@@ -110,6 +110,7 @@ my:wait_file() {
 
 ################################### INSTALL ###################################
 
+# my:dnf
 my:dnf_install() {
     sudo dnf install -y -q "$@"
 }
@@ -128,10 +129,12 @@ my:dnf_remove() {
     sudo dnf remove -y -q "$@"
 }
 
+# my:flatpak
 my:flatpak_install() {
     flatpak install -y flathub "$@"
 }
 
+# my:asdf
 my:asdf_add_plugin() {
     local plugin="$1"
 
@@ -158,6 +161,7 @@ my:asdf_install_and_set_global() {
     cd "$previous_dir"
 }
 
+# my:git
 my:git_clone() {
     local repository="$1"
     local directory="$2"
