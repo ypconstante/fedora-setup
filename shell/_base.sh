@@ -96,7 +96,7 @@ my:wait_file() {
         fi
         if [[ $time_waiting -gt 20 ]]; then
             echo ''
-            my_echo_error 'File still not created after 20 '
+            my:echo_error 'File still not created after 20 '
             return 1
         fi
     done
