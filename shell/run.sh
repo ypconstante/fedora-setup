@@ -16,5 +16,8 @@ source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 ./dev.sh
 ./file-manager.sh
 ./file-system.sh
+./graphics.sh
+./memory.sh
 ./peripherals.sh
 ./sound.sh
+./system-monitor.sh
