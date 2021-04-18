@@ -24,4 +24,5 @@ source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 ./screen-capture.sh
 ./sound.sh
 ./system-monitor.sh
+./utility.sh
 ./virtualization.sh
