@@ -12,6 +12,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 ./bluetooth.sh
 ./browser.sh
 ./certificates.sh
+./communication.sh
 ./desktop.sh
 ./dev.sh
 ./file-manager.sh
