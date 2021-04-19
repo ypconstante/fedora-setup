@@ -132,6 +132,8 @@ my:dnf_remove() {
 # my:flatpak
 my:flatpak_install() {
     flatpak install -y flathub "$@"
+    sleep 0.5
+    echo ''
 }
 
 # my:asdf
