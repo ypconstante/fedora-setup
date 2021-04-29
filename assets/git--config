@@ -31,13 +31,13 @@
 [log]
     abbrevCommit = true
 [merge]
-    tool = vscode
+    tool = codium
 [mergetool]
     keepBackup = false
     keepTemporaries = false
     prompt = false
-[mergetool "vscode"]
-    cmd = code --wait $MERGED
+[mergetool "codium"]
+    cmd = flatpak run com.vscodium.codium --wait $MERGED
 [pull]
     rebase = true
 [push]

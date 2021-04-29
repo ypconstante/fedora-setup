@@ -219,6 +219,8 @@ step_alias() {
     alias tis='tig status'
     alias til='tig log'
     alias tib='tig blame -C'
+
+    alias codium="flatpak run com.vscodium.codium"
 }
 
 step_style() {
