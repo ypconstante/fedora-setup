@@ -23,11 +23,17 @@ my:link_file "$ASSETS_DIR/browser_firefox--userChrome.css" "${profile_dir}/chrom
 my:link_file "$ASSETS_DIR/browser_firefox--userContent.css" "${profile_dir}/chrome/userContent.css"
 my:step_end
 
-my:step_begin "add temporary chromium to menu"
+my:step_begin "add temporary firefox to menu"
 bin_file="$HOME/.local/bin/firefox-temp"
 menu_file="$XDG_DATA_HOME/applications/firefox-temp.desktop"
 my:link_file "$ASSETS_DIR/browser_firefox--temp-profile.sh" "$bin_file"
 chmod +x "$bin_file"
 my:link_file "$ASSETS_DIR/browser_firefox--temp-profile.desktop" "$menu_file"
 chmod +x "$menu_file"
+my:step_end
+
+my:step_begin "enable h264 codec"
+# https://docs.fedoraproject.org/en-US/quick-docs/openh264/
+sudo dnf config-manager --set-enabled fedora-cisco-openh264
+my:dnf_install gstreamer1-plugin-openh264 mozilla-openh264
 my:step_end
