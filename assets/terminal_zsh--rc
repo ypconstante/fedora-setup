@@ -221,6 +221,8 @@ step_alias() {
     alias tib='tig blame -C'
 
     alias codium="flatpak run com.vscodium.codium"
+
+    unalias _
 }
 
 step_style() {
