@@ -9,6 +9,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 ./git.sh
 
 ./terminal.sh
+./battery.sh
 ./bluetooth.sh
 ./browser.sh
 ./certificates.sh
