@@ -32,15 +32,25 @@ highest_partition_id() {
             | tail -n1 \
             | sed "s|^${disk_partition_path_prefix}||"
     )
-    echo "${result:-1}"
+    echo "${result:-2}"
 }
 
+global_efi_partition_id=1
+lvm_partition_id=2
 os_efi_partition_id=$(("$(highest_partition_id)" + 1))
 boot_partition_id=$(("$(highest_partition_id)" + 2))
-encrypted_partition_id=$(("$(highest_partition_id)" + 3))
 
-global_efi_partition_path="${disk_partition_path_prefix}1"
+global_efi_partition_path="${disk_partition_path_prefix}${global_efi_partition_id}"
+lvm_partition_path="${disk_partition_path_prefix}${lvm_partition_id}"
 os_efi_partition_path="${disk_partition_path_prefix}${os_efi_partition_id}"
+boot_partition_path="${disk_partition_path_prefix}${boot_partition_id}"
+
+# lvm
+main_vg='main_vg'
+encrypted_volume_name="${os_install_id}_encrypted_lv"
+encrypted_volume_path="/dev/mapper/${main_vg}-${encrypted_volume_name}"
+decrypted_partition_name="${os_install_id}-decrypted"
+decrypted_partition_path="/dev/mapper/${decrypted_partition_name}"
 
 if [ -z "$os_install_id" ]; then
     my:echo_error "os_install_id is mandatory"
@@ -52,35 +62,64 @@ if [ -z "$os_partition_size" ]; then
     exit 1
 fi
 
-setup_efi_partition() {
+create_common_partition() {
     if [ -e $global_efi_partition_path ]; then
-        echo 'efi partition already created, skipping'
+        echo 'common partitions already created, skipping'
         return 0
     fi
 
     # create a new GPT partition table
     sgdisk -g $disk_path
+    partprobe $disk_path
 
-    # efi partition
+    # global efi partition
     sgdisk \
-        --new 1::+128M \
-        --typecode 1:ef00 \
-        --change-name '1:Global EFI' \
+        --new "${global_efi_partition_id}::+128M" \
+        --typecode "${global_efi_partition_id}:ef00" \
+        --change-name "${global_efi_partition_id}:Global EFI" \
         $disk_path
-    partprobe "$disk_path"
+    partprobe $disk_path
 
     mkfs.fat -F32 $global_efi_partition_path -n 'GLOBAL_EFI'
+
+    # lvm partition
+    sgdisk \
+        --new "${lvm_partition_id}:3G:" \
+        --change-name "${lvm_partition_id}:LVM" \
+        $disk_path
+    partprobe $disk_path
+
+    pvcreate $lvm_partition_path
+    vgcreate $main_vg $lvm_partition_path
 }
 
-setup_os_efi_partition() {
+create_os_partition() {
+    vgchange -ay $main_vg
+
+    # root
+    lvcreate --size "${os_partition_size}" --name $encrypted_volume_name $main_vg
+    cryptsetup luksFormat --type luks2 -v -y $encrypted_volume_path
+    cryptsetup luksOpen -v $encrypted_volume_path $decrypted_partition_name
+    mkfs.btrfs -L "${decrypted_partition_name}" $decrypted_partition_path
+
+    # os efi
     sgdisk \
         --new "${os_efi_partition_id}::+128M" \
         --typecode "${os_efi_partition_id}:ef00" \
         --change-name "${os_efi_partition_id}:${capitalized_os_install_id} EFI" \
         $disk_path
-    partprobe "$disk_path"
+    partprobe $disk_path
 
     mkfs.fat -F32 $os_efi_partition_path -n "${capitalized_os_install_id}"
+
+    # boot
+    sgdisk \
+        --new "${boot_partition_id}::+512M" \
+        --change-name "${boot_partition_id}:${capitalized_os_install_id} Boot" \
+        $disk_path
+    partprobe $disk_path
+
+    mkfs.ext4 $boot_partition_path -L "${capitalized_os_install_id} Boot"
 }
 
 run_install() {
@@ -88,30 +127,18 @@ run_install() {
         installation config
 
         partition
-            - custom
+            - advanced custom
 
-            - encrypt my data
-            - create automatically
+            - ${os_efi_partition_path} - /boot/efi
+            - ${boot_partition_path} - /boot
 
-            - select root
-            - modify volume
-            - size fixed - ${os_partition_size}
-
-            - select boot
-            - size 512M
-            - label '${capitalized_os_install_id} Boot'
-
-            - change /boot/efi to ${os_efi_partition_path}
+            - select ${decrypted_partition_name}
+            - add subvolume
+                - name root
+                - mountpoint /
     "
 
     liveinst
-}
-
-setup_os_partitions() {
-    sgdisk \
-        --change-name "${boot_partition_id}:${capitalized_os_install_id} Boot" \
-        --change-name "${encrypted_partition_id}:${capitalized_os_install_id} Crypt" \
-        $disk_path
 }
 
 install_refind() {
@@ -144,13 +171,12 @@ install_refind() {
     rm -f /boot/efi/EFI/refind/refind-menu.conf
 
     find /boot/efi/EFI/refind -name 'refind-menu-item-*.conf' -print0 \
-        | sort -zn \
+        | sort -z -k 1,1 -t .\
         | xargs -0 cat \
         > /boot/efi/EFI/refind/refind-menu.conf
 }
 
-setup_efi_partition
-setup_os_efi_partition
+create_common_partition
+create_os_partition
 run_install
-setup_os_partitions
 install_refind
