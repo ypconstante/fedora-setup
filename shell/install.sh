@@ -6,8 +6,17 @@ source /etc/os-release
 
 set -euxo pipefail
 
-os_install_id=''
-os_partition_size=''
+read -r -p 'install id: ' os_install_id
+if [ -z "$os_install_id" ]; then
+    my:echo_error "os_install_id is mandatory"
+    exit 1
+fi
+
+read -r -p 'partition size: ' os_partition_size
+if [ -z "$os_partition_size" ]; then
+    my:echo_error "os_partition_size is mandatory"
+    exit 1
+fi
 
 capitalized_os_install_id=$(echo "$os_install_id" | sed 's/[^ _-]*/\u&/g')
 
@@ -51,16 +60,6 @@ encrypted_volume_name="${os_install_id}_encrypted_lv"
 encrypted_volume_path="/dev/mapper/${main_vg}-${encrypted_volume_name}"
 decrypted_partition_name="${os_install_id}-decrypted"
 decrypted_partition_path="/dev/mapper/${decrypted_partition_name}"
-
-if [ -z "$os_install_id" ]; then
-    my:echo_error "os_install_id is mandatory"
-    exit 1
-fi
-
-if [ -z "$os_partition_size" ]; then
-    my:echo_error "os_partition_size is mandatory"
-    exit 1
-fi
 
 create_common_partition() {
     if [ -e $global_efi_partition_path ]; then
