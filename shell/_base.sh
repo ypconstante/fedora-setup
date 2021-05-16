@@ -19,11 +19,12 @@ set -e
 sudo true
 set +e
 
-cd "$(dirname "${BASH_SOURCE[0]}")"
-
-export ASSETS_DIR=$(realpath ../assets)
 export CURRENT_SCRIPT_PATH=$(realpath "${BASH_SOURCE[1]}")
 export CURRENT_SCRIPT=$(basename "$CURRENT_SCRIPT_PATH")
+export SCRIPTS_DIR=$(dirname "$CURRENT_SCRIPT_PATH")
+export ASSETS_DIR=$(realpath "$SCRIPTS_DIR/../assets")
+
+cd "$SCRIPTS_DIR"
 
 source /etc/os-release
 
