@@ -29,6 +29,16 @@ if [ ! -e "/dev/${disk_name}" ]; then
     disk_partition_id_prefix=''
 fi
 
+if [ ! -e "/dev/${disk_name}" ]; then
+    disk_name='vda'
+    disk_partition_id_prefix=''
+fi
+
+if [ ! -e "/dev/${disk_name}" ]; then
+    my:echo_error "disk not found"
+    exit 1
+fi
+
 disk_path="/dev/${disk_name}"
 disk_partition_name_prefix="${disk_name}${disk_partition_id_prefix}"
 disk_partition_path_prefix="/dev/${disk_partition_name_prefix}"
