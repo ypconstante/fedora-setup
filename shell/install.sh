@@ -185,7 +185,14 @@ install_refind() {
         > /boot/efi/EFI/refind/refind-menu.conf
 }
 
+backup_luks_header() {
+    cryptsetup luksHeaderBackup \
+        --header-backup-file "/mnt/sysroot/boot/luks-header-backup-${os_install_id}" \
+        "$encrypted_volume_path"
+}
+
 create_common_partition
 create_os_partition
 run_install
 install_refind
+backup_luks_header
