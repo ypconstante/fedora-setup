@@ -39,6 +39,11 @@ Configure Firefox:
     - Enable Add-ons
     - Disable credit cards
 
+Configure git:
+- `git config --global user.email "you@example.com"`
+- `git config --global user.name "Your Name"`
+- [Create git key](https://github.com/ypconstante/mint-setup/wiki#create-ssh-key)
+
 Configure JetBrains Toolbox:
 - Sign in
 - Install IntelliJ
