@@ -22,7 +22,8 @@ set +e
 export CURRENT_SCRIPT_PATH=$(realpath "${BASH_SOURCE[1]}")
 export CURRENT_SCRIPT=$(basename "$CURRENT_SCRIPT_PATH")
 export SCRIPTS_DIR=$(dirname "$CURRENT_SCRIPT_PATH")
-export ASSETS_DIR=$(realpath "$SCRIPTS_DIR/../assets")
+export PROJECT_DIR=$(realpath "$SCRIPTS_DIR/..")
+export ASSETS_DIR=$(realpath "$PROJECT_DIR/assets")
 
 cd "$SCRIPTS_DIR"
 
