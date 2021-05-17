@@ -54,7 +54,7 @@ Configure packages:
 - maven
 - npm
 
-[Install video drivers](https://github.com/lutris/docs/blob/master/InstallingDrivers.md)
+[Install Nvidia drivers](https://rpmfusion.org/Howto/NVIDIA)
 
 Optional - Gaming:
 - Run `~/projects/personal/fedora-setup/shell/gaming.sh`
