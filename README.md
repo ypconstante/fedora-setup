@@ -38,6 +38,7 @@ Configure Firefox:
 - Change sync config
     - Enable Add-ons
     - Disable credit cards
+- Enable H264 plugin
 
 Configure git:
 - `git config --global user.email "you@example.com"`
