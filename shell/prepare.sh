@@ -33,7 +33,7 @@ my:dnf_install fwupd
 sudo fwupdmgr get-devices
 sudo fwupdmgr refresh --force
 sudo fwupdmgr get-updates
-sudo fwupdmgr update
+sudo fwupdmgr update -y
 my:step_end
 
 my:step_begin "create common folders"
