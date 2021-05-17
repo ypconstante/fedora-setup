@@ -3,7 +3,7 @@
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
 my:step_begin "modify mouse and touchpad settings"
-# locate cursor with ctrl
+# disable locate cursor with ctrl
 dconf write /org/cinnamon/settings-daemon/peripherals/mouse/locate-pointer false
 # disable left+right click to middle click
 dconf write /org/cinnamon/settings-daemon/peripherals/mouse/middle-button-enabled false
@@ -11,6 +11,9 @@ dconf write /org/cinnamon/settings-daemon/peripherals/mouse/middle-button-enable
 dconf write /org/cinnamon/settings-daemon/peripherals/touchpad/tap-to-click false
 # scroll two fingers
 dconf write /org/cinnamon/settings-daemon/peripherals/touchpad/scrolling-method 1
+# multiple fingers for right and middle click
+dconf write /org/cinnamon/settings-daemon/peripherals/touchpad/clickpad-click 2
+
 my:step_end
 
 my:step_begin "modify keyboard settings"
