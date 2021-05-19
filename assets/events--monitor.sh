@@ -92,6 +92,12 @@ on_unlock() {
     logger "END: on_unlock"
 }
 
+on_headphone_plug() {
+    logger "BEGIN: on_headphone_plug"
+    mute_speakers
+    logger "END: on_headphone_plug"
+}
+
 on_headphone_unplug() {
     logger "BEGIN: on_headphone_unplug"
     mute_speakers
@@ -111,7 +117,9 @@ on_startup
 pactl subscribe |
     while read line; do
         case "$line" in
-            "Event 'remove'"*)
+            "Event 'new' on card"*)
+                on_headphone_plug;;
+            "Event 'remove' on card"*)
                 on_headphone_unplug;;
         esac
     done &
