@@ -23,7 +23,7 @@ get_desktop() {
 disable_bluetooth() {
     pkill blueman-applet
     pkill blueman-manager
-    rfkill block bluetooth
+    sudo rfkill block bluetooth
 }
 
 close_jetbrains_toolbox() {
@@ -39,10 +39,8 @@ mute() {
 }
 
 mute_speakers() {
-    if amixer get Speaker &> /dev/null; then
-        amixer set Speaker 0 -q
-        amixer set Speaker mute -q
-    fi
+    amixer -Dhw:0 -q set Speaker 0% &> /dev/null
+    amixer -Dhw:0 -q set Speaker mute &> /dev/null
 }
 
 unmute() {
@@ -110,11 +108,12 @@ logger "\$DBUS_EVENT: ${DBUS_EVENT}"
 
 on_startup
 
-acpi_listen |
+pactl subscribe |
     while read line; do
-        if [ "$line" = "jack/headphone HEADPHONE unplug" ]; then
-            on_headphone_unplug
-        fi
+        case "$line" in
+            "Event 'remove'"*)
+                on_headphone_unplug;;
+        esac
     done &
 
 dbus-monitor --session "$DBUS_EVENT" |

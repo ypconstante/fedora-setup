@@ -64,7 +64,7 @@ my:create_parent_dirs() {
 my:file_contains_line() {
     local file="$1"
     local content="$2"
-    grep -Fxq "$content" "$file"
+    grep -Fxq "$content" "$file" 2> /dev/null || sudo grep -Fxq "$content" "$file"
 }
 
 my:link_file() {
