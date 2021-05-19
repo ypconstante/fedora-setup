@@ -1,6 +1,6 @@
 [Desktop Entry]
 Version=1.0
-Name=Chromium Web Browser - Temporary
+Name=Temporary Chromium Web Browser
 GenericName=Web Browser
 Comment=Access the Internet
 Exec=chromium-browser --guest --password-store=basic
