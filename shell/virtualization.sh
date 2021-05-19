@@ -12,4 +12,5 @@ sudo systemctl enable libvirtd
 sudo modprobe kvm
 sudo modprobe kvm_intel
 sudo modprobe kvm_amd
+sudo usermod -aG libvirt "$USER"
 my:step_end
