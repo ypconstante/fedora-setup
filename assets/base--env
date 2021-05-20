@@ -46,7 +46,6 @@ export NODE_REPL_HISTORY="${XDG_DATA_HOME}/node_repl_history"
 export NPM_CONFIG_CACHE=${XDG_LIB_HOME}/npm
 export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/npm/npmrc"
 export WGETRC="${XDG_CONFIG_HOME}/wgetrc"
-export ZDOTDIR="${XDG_DATA_HOME}/zsh"
 
 # Path
 export DEFAULT_PATH="${PATH}"

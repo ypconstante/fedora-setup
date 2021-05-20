@@ -8,6 +8,11 @@ mkdir -p ~/.config/fish/completions
 sudo chsh -s "$(command -v fish)" "$USER"
 my:step_end
 
+my:step_begin "install starship"
+my:dnf_install starship
+my:link_file "$ASSETS_DIR/terminal_fish--starship.toml" "$XDG_CONFIG_HOME/starship.toml"
+my:step_end
+
 my:step_begin "add asdf completion"
 my:link_file "$ASDF_DIR/completions/asdf.fish" ~/.config/fish/completions/asdf.fish
 my:step_end
