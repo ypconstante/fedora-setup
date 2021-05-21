@@ -17,6 +17,7 @@
 #nav-bar {
     --toolbar-field-focus-border-color: var(--lwt-toolbar-field-border-color);
     --toolbarbutton-outer-padding: 0;
+    --toolbarbutton-border-radius: 0;
 }
 
 #urlbar-container[breakout],
