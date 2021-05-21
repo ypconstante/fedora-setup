@@ -3,6 +3,7 @@
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
 sublime_config_dir=$HOME/.config/sublime-text-3
+preferences_file="$sublime_config_dir/Packages/User/Preferences.sublime-settings"
 package_control_file="$sublime_config_dir/Installed Packages/Package Control.sublime-package"
 package_control_config_file="$sublime_config_dir/Packages/User/Package Control.sublime-settings"
 
@@ -13,6 +14,7 @@ my:step_end
 
 my:step_begin "install sublime text"
 my:dnf_install sublime-text
+my:link_file "$ASSETS_DIR/dev_sublime--preferences.sublime-settings" "$preferences_file"
 my:step_end
 
 my:step_begin "install package control"
