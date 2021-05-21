@@ -11,6 +11,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 ./terminal.sh
 ./battery.sh
 ./bluetooth.sh
+./boot.sh
 ./browser.sh
 ./certificates.sh
 ./communication.sh
@@ -20,7 +21,6 @@ source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 ./file-manager.sh
 ./file-system.sh
 ./graphics.sh
-./grub.sh
 ./media.sh
 ./memory.sh
 ./peripherals.sh
