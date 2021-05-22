@@ -92,17 +92,23 @@ on_unlock() {
     logger "END: on_unlock"
 }
 
-on_headphone_plug() {
-    logger "BEGIN: on_headphone_plug"
+on_new_audio_device() {
+    logger "BEGIN: on_new_audio_device"
     mute_speakers
-    logger "END: on_headphone_plug"
+    logger "END: on_new_audio_device"
 }
 
-on_headphone_unplug() {
-    logger "BEGIN: on_headphone_unplug"
+on_generic_change_audio_device() {
+    logger "BEGIN: on_generic_change_audio_device"
+    mute_speakers
+    logger "END: on_generic_change_audio_device"
+}
+
+on_removed_audio_device() {
+    logger "BEGIN: on_removed_audio_device"
     mute_speakers
     pause
-    logger "END: on_headphone_unplug"
+    logger "END: on_removed_audio_device"
 }
 
 
@@ -118,9 +124,11 @@ pactl subscribe |
     while read line; do
         case "$line" in
             "Event 'new' on card"*)
-                on_headphone_plug;;
+                on_new_audio_device;;
+            "Event 'change' on card"*)
+                on_generic_change_audio_device;;
             "Event 'remove' on card"*)
-                on_headphone_unplug;;
+                on_removed_audio_device;;
         esac
     done &
 
