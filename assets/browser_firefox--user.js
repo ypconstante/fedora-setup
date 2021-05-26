@@ -1597,7 +1597,6 @@ user_pref("browser.newtab.preload", true); // 0104
 user_pref("extensions.update.autoUpdateDefault", true); // 0302
 user_pref("keyword.enabled", true); // 0801
 user_pref("layout.css.visited_links_enabled", false); // 0805
-user_pref("browser.search.suggest.enabled", true); // 0807
 user_pref("browser.urlbar.suggest.searches", true); // 0808
 user_pref("browser.sessionstore.interval", 300000); // 1023
 user_pref("browser.shell.shortcutFavicons", true); // 1030
