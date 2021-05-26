@@ -5,7 +5,6 @@ source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 my:step_begin "install fish"
 my:dnf_install fish
 mkdir -p ~/.config/fish/completions
-sudo chsh -s "$(command -v fish)" "$USER"
 my:step_end
 
 my:step_begin "reset config"

@@ -59,3 +59,8 @@ dconf write /org/gnome/terminal/legacy/keybindings/find-clear "'<Primary>j'"
 dconf write /org/gnome/terminal/legacy/keybindings/next-tab "'<Primary>Tab'"
 dconf write /org/gnome/terminal/legacy/keybindings/prev-tab "'<Primary><Shift>Tab'"
 my:step_end
+
+my:step_begin "use fish"
+dset use-custom-command true
+dset custom-command "'$(command -v fish)'"
+my:step_end
