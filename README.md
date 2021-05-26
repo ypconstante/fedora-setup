@@ -35,9 +35,6 @@ Configure Firefox:
 - Delete default bookmarks
 - [Install and login into 1Password](https://addons.mozilla.org/en-US/firefox/addon/1password-x-password-manager/)
 - Sign in
-- Change sync config
-    - Enable Add-ons
-    - Disable credit cards
 - Change theme to dark compact
 - Import extensions config
 - Enable H264 plugin
@@ -60,11 +57,6 @@ Sign in or add license to:
 
 Configure Chromium:
 - Change search engine to DDG
-
-Configure packages:
-- gradle
-- maven
-- npm
 
 [Install Nvidia drivers](https://rpmfusion.org/Howto/NVIDIA)
 
