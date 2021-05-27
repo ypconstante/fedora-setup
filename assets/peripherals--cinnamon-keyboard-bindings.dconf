@@ -4,7 +4,7 @@ command='gnome-system-monitor'
 name='gnome-system-monitor'
 
 [custom-keybindings/custom1]
-binding=['<Primary>q']
+binding=['<Primary>q', 'KP_Insert']
 command='true'
 name='disable shortcuts'
 
