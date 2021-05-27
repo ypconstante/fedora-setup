@@ -26,6 +26,10 @@ disable_bluetooth() {
     sudo rfkill block bluetooth
 }
 
+disable_numlock() {
+    numlockx off
+}
+
 close_jetbrains_toolbox() {
     pkill jetbrains-toolb
 }
@@ -71,6 +75,7 @@ on_startup() {
     logger "BEGIN: on_startup"
     disable_bluetooth
     mute_speakers
+    disable_numlock
     logger "END: on_startup"
 }
 
@@ -81,6 +86,7 @@ on_lock() {
     pause
     close_jetbrains_toolbox
     disable_bluetooth
+    disable_numlock
     logger "END: on_lock"
 }
 
@@ -89,6 +95,7 @@ on_unlock() {
     unmute
     mute_speakers
     play
+    disable_numlock
     logger "END: on_unlock"
 }
 

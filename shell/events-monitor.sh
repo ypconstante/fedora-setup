@@ -3,7 +3,7 @@
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
 my:step_begin "install dependencies"
-my:dnf_install playerctl pulseaudio-utils
+my:dnf_install numlockx playerctl pulseaudio-utils
 my:step_end
 
 my:step_begin "install service"
