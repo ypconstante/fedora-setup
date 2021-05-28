@@ -8,7 +8,7 @@ mkdir -p ~/.config/fish/completions
 my:step_end
 
 my:step_begin "reset config"
-rm -rf "${XDG_CONFIG_HOME}/fish"
+rm -rf "${XDG_CONFIG_HOME}/fish/fish_variables"
 my:step_end
 
 my:step_begin "install starship"
