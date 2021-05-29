@@ -43,8 +43,10 @@ mute() {
 }
 
 mute_speakers() {
-    amixer -Dhw:0 -q set Speaker 0% &> /dev/null
-    amixer -Dhw:0 -q set Speaker mute &> /dev/null
+    if pactl list sinks | grep 'Active Port' | grep 'speaker'; then
+        amixer -Dhw:0 -q set Speaker 0% &> /dev/null
+        amixer -Dhw:0 -q set Speaker mute &> /dev/null
+    fi
 }
 
 unmute() {
