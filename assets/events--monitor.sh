@@ -49,6 +49,12 @@ mute_speakers() {
     fi
 }
 
+mute_internal_mic() {
+    amixer -Dhw:0 -q set 'Internal Mic Boost' 0% &> /dev/null
+    amixer -Dhw:0 -q set Capture 0% &> /dev/null
+    amixer -Dhw:0 -q set Capture nocap &> /dev/null
+}
+
 unmute() {
     pactl set-sink-mute @DEFAULT_SINK@ 0
 }
@@ -77,6 +83,7 @@ on_startup() {
     logger "BEGIN: on_startup"
     disable_bluetooth
     mute_speakers
+    mute_internal_mic
     disable_numlock
     logger "END: on_startup"
 }
@@ -89,6 +96,7 @@ on_lock() {
     close_jetbrains_toolbox
     disable_bluetooth
     disable_numlock
+    mute_internal_mic
     logger "END: on_lock"
 }
 
@@ -96,6 +104,7 @@ on_unlock() {
     logger "BEGIN: on_unlock"
     unmute
     mute_speakers
+    mute_internal_mic
     play
     disable_numlock
     logger "END: on_unlock"
