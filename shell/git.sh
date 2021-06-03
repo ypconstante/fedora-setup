@@ -55,6 +55,5 @@ my:step_end
 
 my:step_begin "configure current repo"
 cd "$PROJECT_DIR"
-git config core.filemode false
 git remote set-url origin git@github.com:ypconstante/fedora-setup.git
 my:step_end
