@@ -30,9 +30,9 @@ my:step_end
 
 my:step_begin "update firmwares"
 my:dnf_install fwupd
-sudo fwupdmgr get-devices
-sudo fwupdmgr refresh --force
-sudo fwupdmgr get-updates
+sudo fwupdmgr get-devices -y
+sudo fwupdmgr refresh --force -y
+sudo fwupdmgr get-updates -y
 sudo fwupdmgr update -y
 my:step_end
 
