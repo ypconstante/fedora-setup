@@ -1,34 +1,12 @@
-/* hide titlebar */
-#titlebar-buttonbox {
-    overflow: hidden;
-}
-
-/* hide tabs */
-#TabsToolbar {
+/*********************************** Toolbar **********************************/
+/* hide tabs  */
+#titlebar {
     visibility: collapse !important;
 }
 
-/* fix back button position */
-#back-button > menupopup {
-    margin-top: 0 !important;
-}
-
-/* improve urlbar ui */
-#nav-bar {
-    --toolbar-field-focus-border-color: var(--lwt-toolbar-field-border-color);
-    --toolbarbutton-outer-padding: 0;
-    --toolbarbutton-border-radius: 0;
-}
-
-#urlbar-container[breakout],
+/* remove url bar background */
 #urlbar[breakout] {
-    min-height: 28px !important;
-}
-
-#urlbar[breakout] {
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
+    --autocomplete-popup-highlight-background:  var(--lwt-toolbar-field-focus);
 }
 
 #urlbar[breakout] > #urlbar-background {
@@ -36,20 +14,6 @@
     border-radius: 0 !important;
     box-shadow: none !important;
     background-color: var(--toolbar-bgcolor) !important;
-}
-
-#urlbar[breakout][breakout-extend] > #urlbar-input-container,
-#urlbar-input-container {
-    height: var(--urlbar-height) !important;
-    padding-block: 0px !important;
-    padding-inline: 0px !important;
-    transition: none !important;
-    border-radius: 0 !important;
-    border: none !important;
-}
-
-.urlbarView {
-    margin-top: 0 !important;
 }
 
 /* hide 'search with' text */
@@ -63,32 +27,20 @@
     border: none !important;
 }
 
-/* change browser frame color */
-window:not([privatebrowsingmode]) .browserContainer {
-    background-color: #323234;
-}
+/******************************* Tree Style Tab *******************************/
 
-/* hide sidebar header */
+/* hide header  */
 #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
     visibility: collapse !important;
 }
 
-/* hide resizer */
-#sidebar-box + #sidebar-splitter {
-    display: none !important;
-}
-
-#sidebar-box {
+/* fixed width  */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
+    min-width: 320px !important;
+    max-width: 320px !important;
     border-right: 1px solid ThreeDShadow;
 }
 
-/* sidebar fixed width */
-#sidebar-box {
-    min-width: 320px !important;
-    max-width: 320px !important;
-}
-
-/* hide tree tab when only one tab open on window */
-#main-window[title^="[1]"] #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] + #sidebar-splitter {
     visibility: collapse !important;
 }
