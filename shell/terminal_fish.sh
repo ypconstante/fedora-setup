@@ -8,7 +8,7 @@ mkdir -p ~/.config/fish/completions
 my:step_end
 
 my:step_begin "reset config"
-rm -rf "${XDG_CONFIG_HOME}/fish/fish_variables"
+rm -rf "${XDG_CONFIG_HOME}/fish"
 my:step_end
 
 my:step_begin "install starship"
@@ -25,6 +25,7 @@ my:step_begin "install and configure fisher"
 my:link_file "$ASSETS_DIR/terminal_fish--fisher_plugins" "${XDG_CONFIG_HOME}/fish/fish_plugins"
 
 fish -c "curl -sSL https://git.io/fisher | source && fisher update"
+cp -r "$ASSETS_DIR/terminal_fish--config/." "${XDG_CONFIG_HOME}/fish"
 my:step_end
 
 my:step_begin "init universal config"
