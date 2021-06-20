@@ -1,4 +1,7 @@
 format = """
+$cmd_duration\
+$status\
+$line_break\
 $username\
 $hostname\
 $directory\
@@ -11,11 +14,19 @@ $golang\
 $java\
 $nodejs\
 $python\
-$cmd_duration\
 $jobs\
 $line_break\
 $character\
 """
+
+add_newline = false
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold green)"
+
+[cmd_duration]
+format = "Command took [$duration]($style)\n"
 
 [directory]
 truncation_length = 0
@@ -30,3 +41,7 @@ behind = "V${count}"
 
 [nodejs]
 symbol = "⬢ "
+
+[status]
+disabled = false
+format = "[$symbol Command failed $common_meaning$signal_name$maybe_int]($style)\n"
