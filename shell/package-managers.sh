@@ -7,7 +7,6 @@ sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub
 my:step_end
 
 my:step_begin "configure dnf"
-my:append_to_file_if_not_contains /etc/dnf/dnf.conf 'fastestmirror=true'
 my:append_to_file_if_not_contains /etc/dnf/dnf.conf 'deltarpm=true'
 my:append_to_file_if_not_contains /etc/dnf/dnf.conf 'max_parallel_downloads=10'
 my:step_end
