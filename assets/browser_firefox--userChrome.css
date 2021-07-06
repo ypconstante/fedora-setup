@@ -27,6 +27,18 @@
     border: none !important;
 }
 
+
+/************************************ Body ************************************/
+
+/* change body border */
+.browserStack {
+    background-color: #2B2A33;
+}
+
+findbar {
+    border-top: none !important;
+}
+
 /******************************* Tree Style Tab *******************************/
 
 /* hide header  */
@@ -38,7 +50,7 @@
 #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
     min-width: 320px !important;
     max-width: 320px !important;
-    border-right: 1px solid ThreeDShadow;
+    border-right: none;
 }
 
 #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] + #sidebar-splitter {

@@ -3,6 +3,10 @@ body * {
 }
 
 @-moz-document url("about:home"), url("about:newtab") {
+    body {
+        background-color:  #2B2A33 !important;
+    }
+
     .top-site-outer .tile {
         box-shadow: none !important;
     }
