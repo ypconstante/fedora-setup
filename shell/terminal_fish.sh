@@ -22,6 +22,7 @@ my:link_file "$ASDF_DATA_DIR/plugins/java/set-java-home.fish" "${XDG_CONFIG_HOME
 my:step_end
 
 my:step_begin "install and configure fisher"
+mkdir -p ~/projects/personal/fish-local/conf.d
 mkdir -p ~/projects/personal/fish-local/functions
 my:link_file "$ASSETS_DIR/terminal_fish--fisher_plugins" "${XDG_CONFIG_HOME}/fish/fish_plugins"
 
