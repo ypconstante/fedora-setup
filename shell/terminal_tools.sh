@@ -11,3 +11,7 @@ my:dnf_install tealdeer
 tldr tldr &> /dev/null
 tldr --update
 my:step_end
+
+my:step_begin "install tokei"
+my:dnf_install tokei
+my:step_end
