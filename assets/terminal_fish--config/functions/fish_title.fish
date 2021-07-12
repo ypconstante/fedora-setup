@@ -5,7 +5,7 @@ function fish_title
     set -l current_command (echo $_)
 
     set -l pwd ''
-    set -l git_dir (git rev-parse --show-toplevel  ^ /dev/null)
+    set -l git_dir (git rev-parse --show-toplevel 2> /dev/null)
 
     if test -n "$git_dir"
         # we are inside a git directory, so use the name of the repo as the terminal title
