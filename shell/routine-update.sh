@@ -2,6 +2,10 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
+my:step_begin "update current repo"
+git pull
+my:step_end
+
 ./prepare.sh
 ./terminal_fish.sh
 
