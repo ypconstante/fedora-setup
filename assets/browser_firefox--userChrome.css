@@ -35,6 +35,10 @@
     background-color: #2B2A33;
 }
 
+html[privatebrowsingmode] .browserStack {
+    background-color: #25003E;
+}
+
 findbar {
     border-top: none !important;
 }
