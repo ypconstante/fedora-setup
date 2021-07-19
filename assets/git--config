@@ -39,7 +39,7 @@
     keepTemporaries = false
     prompt = false
 [mergetool "codium"]
-    cmd = flatpak run com.vscodium.codium --wait $MERGED
+    cmd = flatpak run com.vscodium.codium --file-forwarding --no-sandbox --unity-launch --wait $MERGED
 [pull]
     rebase = true
 [push]
