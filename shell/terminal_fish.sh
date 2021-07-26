@@ -23,6 +23,7 @@ my:step_end
 
 my:step_begin "install and configure fisher"
 mkdir -p ~/projects/personal/fish-local/conf.d
+mkdir -p ~/projects/personal/fish-local/completions
 mkdir -p ~/projects/personal/fish-local/functions
 my:link_file "$ASSETS_DIR/terminal_fish--fisher_plugins" "${XDG_CONFIG_HOME}/fish/fish_plugins"
 
