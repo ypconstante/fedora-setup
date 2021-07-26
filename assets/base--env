@@ -26,6 +26,10 @@ export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf"
 export ASDF_DATA_DIR="$XDG_LIB_HOME/asdf"
 export ASDF_PATHS="$ASDF_DATA_DIR/shims:$XDG_DATA_HOME/asdf/bin"
 
+# Docker
+export DOCKER_HOST="unix:///run/user/1000/docker.sock"
+export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+
 # Node
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 export NPM_CONFIG_CACHE=$XDG_LIB_HOME/npm
@@ -37,7 +41,6 @@ export AUTOSWITCH_VIRTUAL_ENV_DIR=".local/venv"
 export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
 
 # Fix applications to respect XDG
-export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 export DVDCSS_CACHE="$XDG_DATA_HOME/dvdcss"
 export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
 export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
