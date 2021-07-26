@@ -25,3 +25,10 @@ body * {
         background-color: unset !important;
     }
 }
+
+@-moz-document regexp("moz-extension://.+/sidebar/sidebar.html.*") {
+  :root,
+  #background {
+    background-color: #2B2A33 !important;
+  }
+}
