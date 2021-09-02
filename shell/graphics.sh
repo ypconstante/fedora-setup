@@ -18,3 +18,17 @@ my:dnf_install \
     libva-vdpau-driver \
     libva-utils
 my:step_end
+
+nvidia_gpus=$(lspci | grep -i VGA | grep -i NVIDIA)
+if [ -n "$nvidia_gpus" ]; then
+
+    my:step_begin "configure nvidia"
+    # https://rpmfusion.org/Howto/NVIDIA#Installing_the_drivers
+    my:dnf_install \
+        akmod-nvidia \
+        xorg-x11-drv-nvidia-cuda \
+        xorg-x11-drv-nvidia-cuda-libs
+    my:dnf_install xorg-x11-drv-nvidia-power
+    sudo systemctl enable nvidia-suspend nvidia-resume nvidia-hibernate
+    my:step_end
+fi
