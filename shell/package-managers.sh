@@ -18,6 +18,10 @@ my:dnf_install \
     "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-${release_number}.noarch.rpm"
 my:step_end
 
+my:step_begin "add third party repositories"
+my:dnf_install fedora-workstation-repositories
+my:step_end
+
 my:step_begin "enable rpm fusion appstream metadata"
 sudo dnf -y groupupdate core
 my:step_end

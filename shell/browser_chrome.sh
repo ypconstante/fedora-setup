@@ -2,6 +2,11 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
+my:step_begin "install chrome"
+sudo dnf config-manager --set-enabled google-chrome
+my:dnf_install google-chrome-stable
+my:step_end
+
 my:step_begin "install chromium"
 my:dnf_install chromium
 my:step_end
