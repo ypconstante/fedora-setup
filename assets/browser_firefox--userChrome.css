@@ -16,6 +16,11 @@
     background-color: var(--toolbar-bgcolor) !important;
 }
 
+#urlbar-results > [selected] > .urlbarView-row-inner,
+.searchbar-engine-one-off-item[selected] {
+    background-color: var(--toolbar-field-focus-background-color) !important;
+}
+
 /* hide 'search with' text */
 .urlbarView-results > [type="search"] .urlbarView-title-separator,
 .urlbarView-results > [type="search"] .urlbarView-action {
