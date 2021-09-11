@@ -22,8 +22,17 @@
     visibility: collapse !important;
 }
 
+/* hide 'firefox suggest' text */
+.urlbarView-row[label]::before {
+    display: none !important;
+}
+
 /* hide toolbar border */
-#navigator-toolbox {
+.urlbarView-row[label] {
+    margin-block-start: 0 !important;
+}
+
+.urlbarView-row[label] #navigator-toolbox {
     border: none !important;
 }
 
