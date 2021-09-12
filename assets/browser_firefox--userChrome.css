@@ -28,16 +28,16 @@
 }
 
 /* hide 'firefox suggest' text */
+.urlbarView-row[label] {
+    margin-block-start: 0 !important;
+}
+
 .urlbarView-row[label]::before {
     display: none !important;
 }
 
 /* hide toolbar border */
-.urlbarView-row[label] {
-    margin-block-start: 0 !important;
-}
-
-.urlbarView-row[label] #navigator-toolbox {
+#navigator-toolbox {
     border: none !important;
 }
 
