@@ -13,6 +13,7 @@ $golang\
 $java\
 $nodejs\
 $python\
+$docker_context\
 $jobs\
 $line_break\
 $character\
@@ -29,6 +30,10 @@ format = "Command took [$duration]($style)\n"
 
 [directory]
 truncation_length = 0
+
+[docker_context]
+format = "with [$symbol]($style) "
+detect_files = ["docker-compose.yml", "docker-compose.yaml"]
 
 [git_branch]
 symbol = ""
