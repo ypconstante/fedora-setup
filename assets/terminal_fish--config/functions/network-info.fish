@@ -38,6 +38,10 @@ function network-info
     _echo_title_no_lf "ip"
     curl -4 -s icanhazip.com || curl -6 icanhazip.com
 
+    echo ""
+    _echo_title "speed test"
+    speedtest-cli --simple
+
     true
 end
 
