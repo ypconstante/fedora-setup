@@ -40,7 +40,7 @@ function network-info
 
     echo ""
     _echo_title "speed test"
-    speedtest-cli --simple
+    speedtest-cli --secure --simple
 
     true
 end
