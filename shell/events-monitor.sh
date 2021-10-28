@@ -17,7 +17,7 @@ my:link_file "${ASSETS_DIR}/events--monitor.service" "${XDG_DATA_HOME}/systemd/u
 
 my:append_to_file_if_not_contains \
     /etc/sudoers.d/events-monitor \
-    "$USER ALL=(root) NOPASSWD: $(which rfkill)"
+    "$USER ALL=(root) NOPASSWD: $(command -v rfkill)"
 
 
 systemctl --user daemon-reload
