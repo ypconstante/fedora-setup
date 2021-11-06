@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<!DOCTYPE Menu
+  PUBLIC '-//freedesktop//DTD Menu 1.0//EN'
+  'http://standards.freedesktop.org/menu-spec/menu-1.0.dtd'>
+<Menu>
+	<Name>Applications</Name>
+	<MergeFile type="parent">/etc/xdg/menus/cinnamon-applications.menu</MergeFile>
+	<Menu>
+		<Name>Administration</Name>
+        <AppDir>/home/ypconstante/.local/share/applications</AppDir>
+		<Exclude>
+			<Filename>fish.desktop</Filename>
+		</Exclude>
+		<Exclude>
+			<Filename>firewall-config.desktop</Filename>
+		</Exclude>
+		<Exclude>
+			<Filename>org.mageia.dnfdragora-updater.desktop</Filename>
+		</Exclude>
+	</Menu>
+	<Menu>
+		<Name>Preferences</Name>
+        <AppDir>/home/ypconstante/.local/share/applications</AppDir>
+		<Exclude>
+			<Filename>ibus-setup-cangjie.desktop</Filename>
+		</Exclude>
+	</Menu>
+</Menu>

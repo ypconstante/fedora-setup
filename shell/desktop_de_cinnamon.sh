@@ -89,6 +89,8 @@ jq 'setpath(["search-filesystem", "value"]; false)' < "$menu_config_file" \
     | jq 'setpath(["show-recents", "value"]; false)' \
     > "$menu_config_file.tmp"
 mv "$menu_config_file.tmp" "$menu_config_file"
+
+my:link_file "$ASSETS_DIR/desktop_de_cinnamon--menu.menu" "$HOME/.config/menus/cinnamon-applications.menu"
 my:step_end
 
 my:step_begin "disable recent files"
