@@ -25,3 +25,8 @@ my:step_end
 my:step_begin "enable rpm fusion appstream metadata"
 sudo dnf -y groupupdate core
 my:step_end
+
+my:step_begin "delay automatic update check"
+cp /usr/share/applications/org.mageia.dnfdragora-updater.desktop "$XDG_CONFIG_HOME/autostart/"
+echo 'X-GNOME-Autostart-Delay=100' >> "$XDG_CONFIG_HOME/autostart/org.mageia.dnfdragora-updater.desktop"
+my:step_end
