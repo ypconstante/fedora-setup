@@ -19,6 +19,11 @@ my:dnf_install \
     libva-utils
 my:step_end
 
+
+my:step_begin "install gpu viewer"
+my:flatpak_install io.github.arunsivaramanneo.GPUViewer
+my:step_end
+
 nvidia_gpus=$(lspci | grep -i VGA | grep -i NVIDIA)
 if [ -n "$nvidia_gpus" ]; then
 
