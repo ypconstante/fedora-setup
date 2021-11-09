@@ -13,4 +13,5 @@ my:step_end
 
 my:step_begin "disable unnecessary services"
 sudo systemctl disable ModemManager.service NetworkManager-wait-online.service
+sudo systemctl mask remote-fs.target
 my:step_end
