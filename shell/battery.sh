@@ -9,3 +9,8 @@ my:step_end
 my:step_begin "configure tlp"
 sudo cp "$ASSETS_DIR/battery--tlp.conf" /etc/tlp.d/custom.conf
 my:step_end
+
+my:step_begin "configure upower"
+sudo sed -Ei 's/^(PercentageCritical)=.*$/\1=15/' /etc/UPower/UPower.conf
+sudo sed -Ei 's/^(PercentageAction)=.*$/\1=10/' /etc/UPower/UPower.conf
+my:step_end
