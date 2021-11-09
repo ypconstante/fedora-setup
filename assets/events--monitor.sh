@@ -23,7 +23,7 @@ get_desktop() {
 disable_bluetooth() {
     pkill blueman-applet
     pkill blueman-manager
-    sudo rfkill block bluetooth
+    bluetoothctl -- power off
 }
 
 disable_numlock() {

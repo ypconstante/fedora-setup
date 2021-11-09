@@ -15,10 +15,6 @@ chmod +x "$bin_file"
 
 my:link_file "${ASSETS_DIR}/events--monitor.service" "${XDG_DATA_HOME}/systemd/user/events-monitor.service"
 
-my:append_to_file_if_not_contains \
-    /etc/sudoers.d/events-monitor \
-    "$USER ALL=(root) NOPASSWD: $(command -v rfkill)"
-
 
 systemctl --user daemon-reload
 systemctl --user enable events-monitor.service
