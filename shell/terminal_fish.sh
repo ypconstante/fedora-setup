@@ -35,6 +35,6 @@ my:step_begin "init universal config"
 find "$ASSETS_DIR/terminal_fish--config/universal-conf.d/" -name '*.fish' -exec fish '{}' \;
 my:step_end
 
-my:step_begin "add starfish initialization"
-/usr/bin/starship init fish --print-full-init > "${XDG_CONFIG_HOME}/fish/conf.d/starfish.fish"
+my:step_begin "add starship initialization"
+/usr/bin/starship init fish --print-full-init > "${XDG_CONFIG_HOME}/fish/conf.d/starship.fish"
 my:step_end
