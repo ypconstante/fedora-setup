@@ -15,3 +15,7 @@ my:step_begin "update plugins"
 mkdir -p "$ASDF_DIR/plugins"
 asdf plugin-update --all
 my:step_end
+
+my:step_begin "fish config"
+my:link_file "$ASDF_DIR/completions/asdf.fish" "${HOME}/projects/personal/fish-local/completions/asdf.fish"
+my:step_end
