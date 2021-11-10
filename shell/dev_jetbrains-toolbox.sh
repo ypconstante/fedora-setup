@@ -16,7 +16,7 @@ curl -L 'https://data.services.jetbrains.com/products/download?platform=linux&co
 my:step_end
 
 my:step_begin "extract installer"
-mkdir $installer_dir
+mkdir -p $installer_dir
 tar -xzf $installer_compressed_file -C $installer_dir --strip-components=1
 my:step_end
 
