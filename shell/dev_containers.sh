@@ -4,11 +4,12 @@ source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
 my:step_begin "install docker"
 my:dnf_add_repo https://download.docker.com/linux/fedora/docker-ce.repo
-my:dnf_install docker-ce docker-ce-cli containerd.io
+my:dnf_install docker-ce docker-ce-cli docker-compose containerd.io
 my:step_end
 
 
 my:step_begin "configure docker"
+# https://docs.docker.com/engine/security/rootless/
 my:dnf_install fuse-overlayfs iptables
 
 ## workaround - https://github.com/moby/moby/issues/41230
@@ -21,19 +22,7 @@ systemctl --user enable docker.service
 sudo loginctl enable-linger "$USER"
 my:step_end
 
-my:step_begin "install docker compose"
-docker_compose_file=$HOME/.local/bin/docker-compose
-latest_release_json=/tmp/docker-compose-release.json
-curl -sSL https://api.github.com/repos/docker/compose/releases/latest > $latest_release_json
-docker_compose_url=$( \
-    jq '[ .assets[].browser_download_url ]' $latest_release_json \
-    | jq '[ .[] | select(endswith("Linux-x86_64")) ]' \
-    | jq -r 'first' \
-)
-docker_compose_version=$(jq -r '.tag_name' $latest_release_json)
-curl -L "$docker_compose_url" -o "$docker_compose_file"
-chmod +x "$docker_compose_file"
-
-curl -sSL "https://raw.githubusercontent.com/docker/compose/${docker_compose_version}/contrib/completion/fish/docker-compose.fish" \
-    -o ~/projects/personal/fish-local/completions/docker-compose.fish
+my:step_begin "fish config"
+cp /usr/share/fish/vendor_completions.d/docker-compose.fish \
+    ~/projects/personal/fish-local/completions/docker-compose.fish
 my:step_end
