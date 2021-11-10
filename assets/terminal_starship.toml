@@ -2,6 +2,7 @@ format = """
 $cmd_duration\
 $status\
 $line_break\
+$shell\
 $username\
 $hostname\
 $directory\
@@ -45,6 +46,13 @@ behind = "V${count}"
 
 [nodejs]
 symbol = "⬢ "
+
+[shell]
+disabled = false
+format = "[$indicator]($style)"
+bash_indicator = "bash "
+fish_indicator = ""
+unknown_indicator = "mystery shell"
 
 [status]
 disabled = false
