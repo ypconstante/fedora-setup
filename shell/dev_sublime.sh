@@ -19,7 +19,7 @@ my:step_end
 
 my:step_begin "install package control"
 mkdir -p "$(dirname "$package_control_file")"
-curl -sSL "https://packagecontrol.io/Package Control.sublime-package" -o "$package_control_file"
+curl -sSL "https://packagecontrol.io/Package%20Control.sublime-package" -o "$package_control_file"
 
 mkdir -p "$(dirname "$package_control_config_file")"
 my:link_file "$ASSETS_DIR/dev_sublime--package-control.sublime-settings" "$package_control_config_file"
