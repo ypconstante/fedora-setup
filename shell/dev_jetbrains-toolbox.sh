@@ -28,7 +28,7 @@ my:step_end
 my:step_begin "install toolbox"
 $installer_dir/jetbrains-toolbox
 
-my:wait_file "$install_dir/cef-cache/Session Storage/LOCK"
+my:wait_file "$install_dir/statistics/events.log"
 sleep 10
 
 pkill jetbrains-toolb
