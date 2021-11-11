@@ -8,6 +8,7 @@ my:step_begin "install python dependencies"
 my:dnf_install \
     bzip2-devel \
     openssl-devel \
+    patch \
     readline-devel \
     sqlite-devel \
     zlib-devel
