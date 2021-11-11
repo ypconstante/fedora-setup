@@ -22,9 +22,6 @@ set regexp
 # Better home key when line starts with space
 set smarthome
 
-# Use smooth scrolling by default
-set smooth
-
 # Allow nano to be suspended with ^Z
 set suspend
 
