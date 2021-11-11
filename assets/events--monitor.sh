@@ -23,7 +23,7 @@ get_desktop() {
 disable_bluetooth() {
     pkill blueman-applet
     pkill blueman-manager
-    bluetoothctl -- power off
+    systemctl status bluetooth &> /dev/null && bluetoothctl -- power off
 }
 
 disable_numlock() {
