@@ -3,8 +3,8 @@
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
 my:step_begin "replace blueberry with blueman"
-my:dnf_remove blueberry
 my:dnf_install blueman
+my:dnf_remove blueberry
 my:step_end
 
 my:step_begin "disable blueman applet startup"
