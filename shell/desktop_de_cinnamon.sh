@@ -48,8 +48,8 @@ dconf write /org/cinnamon/panels-autohide "['1:intel']"
 my:step_end
 
 my:step_begin "modify background"
-dconf write /org/cinnamon/desktop/background/picture-uri "'file:///usr/share/backgrounds/f34/default/f34-02-night.png'"
-dconf write /org/cinnamon/desktop/background/picture-options "'stretched'"
+dconf write /org/cinnamon/desktop/background/picture-uri "'file:///usr/share/backgrounds/tiles/default_blue.jpg'"
+dconf write /org/cinnamon/desktop/background/picture-options "'zoom'"
 my:step_end
 
 my:step_begin "modify windows"
