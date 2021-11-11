@@ -46,6 +46,7 @@ my:step_end
 
 my:step_begin "configure context menu"
 dconf write /org/nemo/preferences/enable-delete false
+dconf write /org/nemo/preferences/menu-config/selection-menu-favorite false
 dconf write /org/nemo/preferences/menu-config/selection-menu-scripts false
 dconf write /org/nemo/preferences/menu-config/selection-menu-pin false
 dconf write /org/nemo/preferences/menu-config/background-menu-scripts false
