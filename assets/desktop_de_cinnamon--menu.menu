@@ -7,7 +7,7 @@
 	<MergeFile type="parent">/etc/xdg/menus/cinnamon-applications.menu</MergeFile>
 	<Menu>
 		<Name>Administration</Name>
-        <AppDir>/home/ypconstante/.local/share/applications</AppDir>
+		<AppDir>/home/ypconstante/.local/share/applications</AppDir>
 		<Exclude>
 			<Filename>fish.desktop</Filename>
 		</Exclude>
@@ -20,7 +20,7 @@
 	</Menu>
 	<Menu>
 		<Name>Preferences</Name>
-        <AppDir>/home/ypconstante/.local/share/applications</AppDir>
+		<AppDir>/home/ypconstante/.local/share/applications</AppDir>
 		<Exclude>
 			<Filename>ibus-setup-cangjie.desktop</Filename>
 		</Exclude>
