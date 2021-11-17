@@ -4,7 +4,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
 my:step_begin "install java"
 my:asdf_add_plugin java
-my:asdf_install_and_set_global java latest:adoptopenjdk-8
+my:asdf_install_and_set_global java latest:temurin-8
 my:step_end
 
 my:step_begin "install maven"
