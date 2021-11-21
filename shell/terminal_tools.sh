@@ -2,6 +2,10 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
+my:step_begin "install neofetch"
+my:dnf_install neofetch
+my:step_end
+
 my:step_begin "install speedtest"
 my:dnf_install speedtest-cli
 my:step_end
