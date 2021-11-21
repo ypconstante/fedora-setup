@@ -2,6 +2,9 @@ function network-info
     set log_file /tmp/network-info
 
 
+    _echo_title_no_lf "private ip"
+    ip -brief -color address | grep --color=NEVER "UP" | tr -s ' ' | cut -d' ' -f3-
+
     _echo_title "resolvectl status"
     resolvectl status
     echo ""
@@ -34,8 +37,7 @@ function network-info
         echo ""
     end
 
-
-    _echo_title_no_lf "ip"
+    _echo_title_no_lf "public ip"
     curl -4 -s icanhazip.com || curl -6 icanhazip.com
 
     echo ""
