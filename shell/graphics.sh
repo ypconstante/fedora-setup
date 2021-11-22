@@ -14,9 +14,11 @@ my:step_end
 
 my:step_begin "enable vaapi"
 my:dnf_install \
-    vdpauinfo \
+    ffmpeg \
+    libva \
     libva-vdpau-driver \
-    libva-utils
+    libva-utils \
+    vdpauinfo
 my:step_end
 
 
@@ -24,10 +26,18 @@ my:step_begin "install gpu viewer"
 my:flatpak_install io.github.arunsivaramanneo.GPUViewer
 my:step_end
 
+intel_gpus=$(lspci | grep -i VGA | grep -i Intel)
+if [ -n "$intel_gpus" ]; then
+
+    my:step_begin "instal and configure intel"
+    my:dnf_install intel-media-driver
+    my:step_end
+fi
+
 nvidia_gpus=$(lspci | grep -i VGA | grep -i NVIDIA)
 if [ -n "$nvidia_gpus" ]; then
 
-    my:step_begin "configure nvidia"
+    my:step_begin "install and configure nvidia"
     # https://rpmfusion.org/Howto/NVIDIA#Installing_the_drivers
     my:dnf_install \
         akmod-nvidia \
