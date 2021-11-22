@@ -42,8 +42,11 @@ if [ -n "$nvidia_gpus" ]; then
     my:dnf_install \
         akmod-nvidia \
         xorg-x11-drv-nvidia-cuda \
-        xorg-x11-drv-nvidia-cuda-libs
-    my:dnf_install xorg-x11-drv-nvidia-power
+        xorg-x11-drv-nvidia-cuda-libs \
+        xorg-x11-drv-nvidia-power
     sudo systemctl enable nvidia-suspend nvidia-resume nvidia-hibernate
+
+    my:dnf_install \
+        nv-codec-headers
     my:step_end
 fi
