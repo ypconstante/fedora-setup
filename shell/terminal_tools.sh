@@ -12,6 +12,7 @@ my:step_end
 
 my:step_begin "install tldr"
 my:dnf_install tealdeer
+my:link_file "$ASSETS_DIR/terminal_tools--tealdeer.toml" "${XDG_CONFIG_HOME}/tealdeer/config.toml"
 tldr tldr &> /dev/null
 tldr --update
 my:step_end
