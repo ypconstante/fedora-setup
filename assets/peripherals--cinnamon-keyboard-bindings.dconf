@@ -1,5 +1,5 @@
 [/]
-custom-list=['custom0', 'custom1']
+custom-list=['custom0', 'custom1', 'custom2']
 looking-glass-keybinding=@as []
 magnifier-zoom-in=@as []
 magnifier-zoom-out=@as []
@@ -14,16 +14,21 @@ binding=['<Primary>q', 'KP_Insert']
 command='true'
 name='disable shortcuts'
 
+[custom-keybindings/custom2]
+binding=['Print']
+command='flameshot gui'
+name='screenshot'
+
 [media-keys]
-area-screenshot=['<Alt>Print']
-area-screenshot-clip=['Print']
+area-screenshot=@as []
+area-screenshot-clip=@as []
 next=['XF86AudioNext', '<Primary>AudioPlay', '<Primary>grave']
 screensaver=['<Super>l', 'XF86ScreenSaver']
 screenshot=@as []
 screenshot-clip=@as []
 terminal=['<Super>t']
-window-screenshot=['<Alt><Super>Print']
-window-screenshot-clip=['<Super>Print']
+window-screenshot=@as []
+window-screenshot-clip=@as []
 
 [wm]
 begin-move=@as []
