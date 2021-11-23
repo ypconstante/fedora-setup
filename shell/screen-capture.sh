@@ -23,5 +23,6 @@ my:dnf_install flameshot
 my:step_end
 
 my:step_begin "configure flameshot"
-my:link_file "$ASSETS_DIR/screen-capture--flameshot.ini" "$XDG_CONFIG_HOME/flameshot/flameshot.ini"
+cp "$ASSETS_DIR/screen-capture--flameshot.ini" "$XDG_CONFIG_HOME/flameshot/flameshot.ini"
+sed -Ei "s|\\\$HOME|$HOME|" "$XDG_CONFIG_HOME/flameshot/flameshot.ini"
 my:step_end
