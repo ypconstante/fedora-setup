@@ -19,9 +19,16 @@ set -e
 sudo true
 set +e
 
-export CURRENT_SCRIPT_PATH=$(realpath "${BASH_SOURCE[1]}")
-export CURRENT_SCRIPT=$(basename "$CURRENT_SCRIPT_PATH")
-export SCRIPTS_DIR=$(dirname "$CURRENT_SCRIPT_PATH")
+if [ "${#BASH_SOURCE[@]}" == 1 ]; then
+    # _base not called by another script, for example my:toolbox-run
+    export CURRENT_SCRIPT=""
+else
+    export CURRENT_SCRIPT_PATH=$(realpath "${BASH_SOURCE[1]}")
+    export CURRENT_SCRIPT=$(basename "$CURRENT_SCRIPT_PATH")
+fi
+
+export BASE_FILE_PATH=$(realpath "${BASH_SOURCE[0]}")
+export SCRIPTS_DIR=$(dirname "$BASE_FILE_PATH")
 export PROJECT_DIR=$(realpath "$SCRIPTS_DIR/..")
 export ASSETS_DIR=$(realpath "$PROJECT_DIR/assets")
 
@@ -201,6 +208,24 @@ my:git_checkout_last_tag() {
     git -C "$directory" -c advice.detachedHead=false checkout "${last_tag}"
 }
 
+################################### TOOLBOX ####################################
+
+my:toolbox-run() {
+    local CONTAINER="fedora-setup-toolbox"
+
+    if ! podman container exists "$CONTAINER"; then
+        toolbox create -y "$CONTAINER"
+        toolbox run -c "$CONTAINER" sudo dnf install -y glibc-langpack-en
+    fi
+
+    podman container exists "$CONTAINER" || toolbox create -y "$CONTAINER"
+
+    SCRIPT="source '$SCRIPTS_DIR/_base.sh';${*@Q};"
+    toolbox run -c "$CONTAINER" bash -c "$SCRIPT"
+
+    podman container stop "$CONTAINER" 1> /dev/null
+}
+
 #################################### PRINT #####################################
 
 # my:file_run
@@ -292,17 +317,18 @@ my:should_skip_file() {
 
 ################################################################################
 
+if [ -n "$CURRENT_SCRIPT" ]; then
+    my:file_run_begin "$CURRENT_SCRIPT"
 
-my:file_run_begin "$CURRENT_SCRIPT"
+    function on_exit {
+        my:file_run_end "$CURRENT_SCRIPT"
+    }
 
-function on_exit {
-    my:file_run_end "$CURRENT_SCRIPT"
-}
+    trap on_exit EXIT
 
-trap on_exit EXIT
-
-skip_cause=$(my:should_skip_file "$CURRENT_SCRIPT")
-if [ -n "$skip_cause" ]; then
-    echo "${skip_cause}, skipping"
-    exit 0
+    skip_cause=$(my:should_skip_file "$CURRENT_SCRIPT")
+    if [ -n "$skip_cause" ]; then
+        echo "${skip_cause}, skipping"
+        exit 0
+    fi
 fi

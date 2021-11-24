@@ -11,6 +11,7 @@ my:dnf_install \
     speedtest-cli \
     tealdeer \
     tokei \
+    toolbox \
     xclip
 my:step_end
 
