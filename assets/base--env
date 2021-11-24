@@ -42,6 +42,7 @@ export AUTOSWITCH_VIRTUAL_ENV_DIR=".local/venv"
 export IPYTHONDIR="$XDG_STATE_HOME/ipython"
 
 # Fix applications to respect XDG
+export HISTFILE="$XDG_STATE_HOME/bash/history"
 export DVDCSS_CACHE="$XDG_DATA_HOME/dvdcss"
 export GRADLE_USER_HOME="$XDG_STATE_HOME/gradle"
 export LESSHISTFILE=-

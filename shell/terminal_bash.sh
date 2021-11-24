@@ -2,8 +2,9 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
-my:step_begin "remove unused files"
+my:step_begin "move history file"
 rm -f "$HOME/.bash_history"
+mkdir -p "$XDG_STATE_HOME"/bash
 my:step_end
 
 my:step_begin "add starship initialization"
