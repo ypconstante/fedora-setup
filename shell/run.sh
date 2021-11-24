@@ -5,7 +5,6 @@ source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 ./package-managers.sh
 ./prepare.sh
 ./environment.sh
-./cli-tools.sh
 ./git.sh
 
 ./terminal.sh
