@@ -6,7 +6,7 @@ my:step_begin "install openssl"
 my:dnf_install openssl
 my:step_end
 
-target_dir='/usr/share/pki/ca-trust-source/anchors/'
+TARGET_DIR='/usr/share/pki/ca-trust-source/anchors/'
 
 install_certificate() {
     local url="$1"
@@ -16,7 +16,7 @@ install_certificate() {
 
     curl -L --cookie "security=true" "$url" -o "$certificate_temp_file"
 
-    sudo cp "$certificate_temp_file" "${target_dir}"
+    sudo cp "$certificate_temp_file" "$TARGET_DIR"
 
     rm "$certificate_temp_file"
 
@@ -45,7 +45,7 @@ curl -L \
 unzip $certificate_chain_compressed_file -d $certificate_chain_dir
 
 certificate_chain_p7b_file=$(find $certificate_chain_dir -name '*.p7b')
-certificate_chain_crt_file="${target_dir}/caixa.crt"
+certificate_chain_crt_file="$TARGET_DIR/caixa.crt"
 
 sudo openssl pkcs7 -print_certs -in "$certificate_chain_p7b_file" -out "$certificate_chain_crt_file"
 sudo restorecon -v "$certificate_chain_crt_file"

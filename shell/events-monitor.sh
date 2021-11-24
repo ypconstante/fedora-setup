@@ -7,12 +7,12 @@ my:dnf_install numlockx playerctl pulseaudio-utils
 my:step_end
 
 my:step_begin "install service"
-bin_file="${HOME}/.local/bin/events-monitor"
+bin_file="$HOME/.local/bin/events-monitor"
 
-my:link_file "${ASSETS_DIR}/events--monitor.sh" "$bin_file"
+my:link_file "$ASSETS_DIR/events--monitor.sh" "$bin_file"
 chmod +x "$bin_file"
 
-my:link_file "${ASSETS_DIR}/events--monitor.service" "${XDG_DATA_HOME}/systemd/user/events-monitor.service"
+my:link_file "$ASSETS_DIR/events--monitor.service" "$XDG_DATA_HOME/systemd/user/events-monitor.service"
 
 
 systemctl --user daemon-reload

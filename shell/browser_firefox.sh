@@ -2,10 +2,10 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
-profile_name='default-release'
-profile_dir="$([ -d "$HOME/.mozilla/firefox" ] && find "$HOME/.mozilla/firefox" -maxdepth 1 -name "*.$profile_name" | head -n 1)"
+PROFILE_NAME='default-release'
+PROFILE_DIR="$([ -d "$HOME/.mozilla/firefox" ] && find "$HOME/.mozilla/firefox" -maxdepth 1 -name "*.$PROFILE_NAME" | head -n 1)"
 
-if [[ ! -d ${profile_dir} ]]; then
+if [[ ! -d "$PROFILE_DIR" ]]; then
     echo 'no firefox profile available, skipping'
     exit 0
 fi
@@ -15,12 +15,12 @@ killall -9 -q firefox
 my:step_end
 
 my:step_begin "config firefox"
-my:link_file "$ASSETS_DIR/browser_firefox--search.json.mozlz4" "${profile_dir}/search.json.mozlz4"
-my:link_file "$ASSETS_DIR/browser_firefox--user.js" "${profile_dir}/user.js"
+my:link_file "$ASSETS_DIR/browser_firefox--search.json.mozlz4" "$PROFILE_DIR/search.json.mozlz4"
+my:link_file "$ASSETS_DIR/browser_firefox--user.js" "$PROFILE_DIR/user.js"
 
-mkdir -p "${profile_dir}/chrome"
-my:link_file "$ASSETS_DIR/browser_firefox--userChrome.css" "${profile_dir}/chrome/userChrome.css"
-my:link_file "$ASSETS_DIR/browser_firefox--userContent.css" "${profile_dir}/chrome/userContent.css"
+mkdir -p "$PROFILE_DIR/chrome"
+my:link_file "$ASSETS_DIR/browser_firefox--userChrome.css" "$PROFILE_DIR/chrome/userChrome.css"
+my:link_file "$ASSETS_DIR/browser_firefox--userContent.css" "$PROFILE_DIR/chrome/userContent.css"
 my:step_end
 
 my:step_begin "add temporary firefox to menu"

@@ -166,7 +166,7 @@ install_refind() {
     mv /tmp/refind-theme-regular-master $theme_dir
     rm -rf $theme_dir/src
 
-    cp "${ASSETS_DIR}/install--refind.conf" /boot/efi/EFI/refind/refind.conf
+    cp "$ASSETS_DIR/install--refind.conf" /boot/efi/EFI/refind/refind.conf
 
     echo "
       menuentry \"Fedora\" {

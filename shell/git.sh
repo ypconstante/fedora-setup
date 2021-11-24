@@ -2,24 +2,24 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
-default_config_file="$HOME/.gitconfig"
-config_dir=${XDG_CONFIG_HOME}/git
-config_file=${config_dir}/config
-git_ignore_file=${config_dir}/gitignore
+DEFAULT_CONFIG_FILE="$HOME/.gitconfig"
+CONFIG_DIR=$XDG_CONFIG_HOME/git
+CONFIG_FILE=$CONFIG_DIR/config
+GIT_IGNORE_FILE=$CONFIG_DIR/gitignore
 
 my:step_begin "install git"
 my:dnf_install git
 my:step_end
 
 my:step_begin "make git respected xdg spec"
-mkdir -p "${config_dir}"
+mkdir -p "$CONFIG_DIR"
 
-if [ -f $default_config_file ]; then
-    mv $default_config_file "${config_file}"
+if [ -f $DEFAULT_CONFIG_FILE ]; then
+    mv $DEFAULT_CONFIG_FILE "$CONFIG_FILE"
 fi
 
-my:create_file "${config_file}"
-my:create_file "${config_dir}/credentials"
+my:create_file "$CONFIG_FILE"
+my:create_file "$CONFIG_DIR/credentials"
 my:step_end
 
 my:step_begin "add known ssh hosts"
@@ -32,10 +32,10 @@ done
 my:step_end
 
 my:step_begin "create gitignore"
-curl -sS https://www.toptal.com/developers/gitignore/api/dotenv,git,linux,jetbrains+all,sublimetext,visualstudiocode -o "${git_ignore_file}"
-echo -e "\n" >> "${git_ignore_file}"
-cat "${ASSETS_DIR}/git--ignore" >> "${git_ignore_file}"
-git config --global core.excludesfile "${git_ignore_file}"
+curl -sS https://www.toptal.com/developers/gitignore/api/dotenv,git,linux,jetbrains+all,sublimetext,visualstudiocode -o "$GIT_IGNORE_FILE"
+echo -e "\n" >> "$GIT_IGNORE_FILE"
+cat "$ASSETS_DIR/git--ignore" >> "$GIT_IGNORE_FILE"
+git config --global core.excludesfile "$GIT_IGNORE_FILE"
 my:step_end
 
 
@@ -45,12 +45,12 @@ my:step_end
 
 my:step_begin "install tig"
 my:dnf_install tig
-mkdir -p "${XDG_DATA_HOME}/tig"
+mkdir -p "$XDG_DATA_HOME/tig"
 my:step_end
 
 my:step_begin "configure git"
-git config --global include.path "${ASSETS_DIR}/git--config"
-git config --global commit.template "${ASSETS_DIR}/git--commit-template"
+git config --global include.path "$ASSETS_DIR/git--config"
+git config --global commit.template "$ASSETS_DIR/git--commit-template"
 my:step_end
 
 my:step_begin "configure current repo"

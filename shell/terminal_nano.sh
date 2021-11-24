@@ -2,10 +2,10 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
-config_dir=${XDG_CONFIG_HOME}/nano
+CONFIG_DIR=$XDG_CONFIG_HOME/nano
 
 my:step_begin "configure"
-mkdir -p "${config_dir}"
-my:link_file "${ASSETS_DIR}/terminal_nano--rc" "${config_dir}/nanorc"
-my:git_clone https://github.com/scopatz/nanorc.git "${config_dir}/syntax"
+mkdir -p "$CONFIG_DIR"
+my:link_file "$ASSETS_DIR/terminal_nano--rc" "$CONFIG_DIR/nanorc"
+my:git_clone https://github.com/scopatz/nanorc.git "$CONFIG_DIR/syntax"
 my:step_end

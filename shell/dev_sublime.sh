@@ -2,7 +2,7 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
-sublime_config_dir=$HOME/.config/sublime-text-3
+sublime_config_dir=$XDG_CONFIG_HOME/sublime-text-3
 preferences_file="$sublime_config_dir/Packages/User/Preferences.sublime-settings"
 package_control_file="$sublime_config_dir/Installed Packages/Package Control.sublime-package"
 package_control_config_file="$sublime_config_dir/Packages/User/Package Control.sublime-settings"

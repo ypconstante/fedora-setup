@@ -29,7 +29,7 @@ cd "$SCRIPTS_DIR"
 
 source /etc/os-release
 
-source "${ASSETS_DIR}/base--env"
+source "$ASSETS_DIR/base--env"
 
 #################################### FILE #####################################
 
@@ -142,7 +142,7 @@ my:flatpak_install() {
 my:asdf_add_plugin() {
     local plugin="$1"
 
-    source "${ASDF_DIR}/asdf.sh"
+    source "$ASDF_DIR/asdf.sh"
 
     asdf plugin-add "${plugin}"
     asdf list-all "${plugin}" 1> /dev/null
@@ -152,7 +152,7 @@ my:asdf_install_and_set_global() {
     local plugin="$1"
     local version="$2"
 
-    source "${ASDF_DIR}/asdf.sh"
+    source "$ASDF_DIR/asdf.sh"
 
     # avoid permission error with plugins using current dir as temporary dir
     previous_dir="$PWD"

@@ -18,8 +18,8 @@ mkdir -p "$HOME/projects/sandbox"
 my:step_end
 
 my:step_begin "move templates folder"
-mv "$HOME/Templates" "${HOME}/.local/template-files"
-xdg-user-dirs-update --set TEMPLATES "${HOME}/.local/template-files"
+mv "$HOME/Templates" "$HOME/.local/template-files"
+xdg-user-dirs-update --set TEMPLATES "$HOME/.local/template-files"
 my:step_end
 
 my:step_begin "create media folder"

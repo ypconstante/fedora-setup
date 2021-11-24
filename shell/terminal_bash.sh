@@ -7,8 +7,8 @@ rm -f "$HOME/.bash_history"
 my:step_end
 
 my:step_begin "add starship initialization"
-sed -Ei "s|~/.bashrc.d|${XDG_CONFIG_HOME}/bashrc.d|" "$HOME/.bashrc"
+sed -Ei "s|~/.bashrc.d|$XDG_CONFIG_HOME/bashrc.d|" "$HOME/.bashrc"
 
-mkdir -p "${XDG_CONFIG_HOME}/bashrc.d"
-/usr/bin/starship init bash --print-full-init > "${XDG_CONFIG_HOME}/bashrc.d/starship.sh"
+mkdir -p "$XDG_CONFIG_HOME/bashrc.d"
+/usr/bin/starship init bash --print-full-init > "$XDG_CONFIG_HOME/bashrc.d/starship.sh"
 my:step_end
