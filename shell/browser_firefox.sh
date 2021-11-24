@@ -3,7 +3,7 @@
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
 profile_name='default-release'
-profile_dir="$([ -d ~/.mozilla/firefox ] && find ~/.mozilla/firefox -maxdepth 1 -name "*.$profile_name" | head -n 1)"
+profile_dir="$([ -d "$HOME/.mozilla/firefox" ] && find "$HOME/.mozilla/firefox" -maxdepth 1 -name "*.$profile_name" | head -n 1)"
 
 if [[ ! -d ${profile_dir} ]]; then
     echo 'no firefox profile available, skipping'

@@ -3,44 +3,44 @@
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
 my:step_begin "documents folder lower case"
-mv ~/Documents ~/documents
+mv "$HOME/Documents" "$HOME/documents"
 xdg-user-dirs-update --set DOCUMENTS "$HOME/documents"
 my:step_end
 
 my:step_begin "downloads lower case"
-mv ~/Downloads ~/downloads
+mv "$HOME/Downloads" "$HOME/downloads"
 xdg-user-dirs-update --set DOWNLOAD "$HOME/downloads"
 my:step_end
 
 my:step_begin "create base project structure"
-mkdir -p ~/projects/personal
-mkdir -p ~/projects/sandbox
+mkdir -p "$HOME/projects/personal"
+mkdir -p "$HOME/projects/sandbox"
 my:step_end
 
 my:step_begin "move templates folder"
-mv ~/Templates "${HOME}/.local/template-files"
+mv "$HOME/Templates" "${HOME}/.local/template-files"
 xdg-user-dirs-update --set TEMPLATES "${HOME}/.local/template-files"
 my:step_end
 
 my:step_begin "create media folder"
-mkdir -p ~/media
+mkdir -p "$HOME/media"
 
 xdg-user-dirs-update --set MUSIC "$HOME/media"
-rm -rf ~/Music
+rm -rf "$HOME/Music"
 
 xdg-user-dirs-update --set PICTURES "$HOME/media"
-rm -rf ~/Pictures
+rm -rf "$HOME/Pictures"
 
 xdg-user-dirs-update --set VIDEOS "$HOME/media"
-rm -rf ~/Videos
+rm -rf "$HOME/Videos"
 my:step_end
 
 my:step_begin "remove non used xdg folders"
 xdg-user-dirs-update --set DESKTOP "$HOME"
-rm -rf ~/Desktop
+rm -rf "$HOME/Desktop"
 
 xdg-user-dirs-update --set PUBLICSHARE "$(xdg-user-dir DOWNLOAD)"
-rm -rf ~/Public
+rm -rf "$HOME/Public"
 my:step_end
 
 my:step_begin "create bookmark"
@@ -53,7 +53,7 @@ my:step_begin "create bookmark"
 my:step_end
 
 my:step_begin "fix gnupg permissions"
-mkdir -p ~/.gnupg
-find ~/.gnupg -type d -exec chmod 700 {} \;
-find ~/.gnupg -type f -exec chmod 600 {} \;
+mkdir -p "$HOME/.gnupg"
+find "$HOME/.gnupg" -type d -exec chmod 700 {} \;
+find "$HOME/.gnupg" -type f -exec chmod 600 {} \;
 my:step_end

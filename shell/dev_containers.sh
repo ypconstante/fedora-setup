@@ -24,5 +24,5 @@ my:step_end
 
 my:step_begin "fish config"
 cp /usr/share/fish/vendor_completions.d/docker-compose.fish \
-    ~/projects/personal/fish-local/completions/docker-compose.fish
+    "$HOME/projects/personal/fish-local/completions/docker-compose.fish"
 my:step_end

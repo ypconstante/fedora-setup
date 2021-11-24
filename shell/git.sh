@@ -2,7 +2,7 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
-default_config_file=~/.gitconfig
+default_config_file="$HOME/.gitconfig"
 config_dir=${XDG_CONFIG_HOME}/git
 config_file=${config_dir}/config
 git_ignore_file=${config_dir}/gitignore
@@ -23,11 +23,11 @@ my:create_file "${config_dir}/credentials"
 my:step_end
 
 my:step_begin "add known ssh hosts"
-mkdir -p ~/.ssh
-chmod 0755 ~/.ssh
+mkdir -p "$HOME/.ssh"
+chmod 0755 "$HOME/.ssh"
 for host in 'bitbucket.org' 'github.com' 'gitlab.com'; do
     ssh-keygen -R $host 1> /dev/null
-    ssh-keyscan -t rsa $host >> ~/.ssh/known_hosts
+    ssh-keyscan -t rsa $host >> "$HOME/.ssh/known_hosts"
 done
 my:step_end
 

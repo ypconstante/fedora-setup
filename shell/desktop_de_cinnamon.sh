@@ -3,7 +3,7 @@
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
 menu_applet_id=42
-menu_config_file=~/.cinnamon/configs/menu@cinnamon.org/$menu_applet_id.json
+menu_config_file="$HOME/.cinnamon/configs/menu@cinnamon.org/$menu_applet_id.json"
 
 my:step_begin "update cinnamon spices"
 cinnamon-spice-updater --update-all

@@ -13,9 +13,9 @@ flatpak override --user $APP_NAME \
     --nofilesystem=home \
     --persist=Warpinator \
     --filesystem=xdg-download
-rm -rf ~/Warpinator
+rm -rf "$HOME/Warpinator"
 
-CONFIG_FILE=~/.var/app/$APP_NAME/config/glib-2.0/settings/keyfile
+CONFIG_FILE="$HOME/.var/app/$APP_NAME/config/glib-2.0/settings/keyfile"
 my:append_to_file_if_not_contains $CONFIG_FILE "[org/x/warpinator/preferences]"
 my:append_to_file_if_not_contains $CONFIG_FILE "receiving-folder='file://$HOME/downloads'"
 my:step_end

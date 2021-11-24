@@ -36,6 +36,6 @@ flatpak override --user $ZOOM_APP_NAME \
     --persist=.zoom \
     --nofilesystem=~/Documents/Zoom \
     --persist=Documents
-rm -rf ~/.zoom ~/Documents/Zoom
+rm -rf "$HOME/.zoom" "$HOME/Documents/Zoom"
 my:step_end
 

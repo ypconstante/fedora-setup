@@ -13,5 +13,5 @@ flatpak override --user $POSTMAN_APP_NAME --reset
 flatpak override --user $POSTMAN_APP_NAME \
     --nofilesystem=home \
     --filesystem=~/projects
-rm -rf ~/Postman
+rm -rf "$HOME/Postman"
 my:step_end

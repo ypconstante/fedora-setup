@@ -3,11 +3,11 @@
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
 my:step_begin "remove unused files"
-rm -f ~/.bash_history
+rm -f "$HOME/.bash_history"
 my:step_end
 
 my:step_begin "add starship initialization"
-sed -Ei "s|~/.bashrc.d|${XDG_CONFIG_HOME}/bashrc.d|" ~/.bashrc
+sed -Ei "s|~/.bashrc.d|${XDG_CONFIG_HOME}/bashrc.d|" "$HOME/.bashrc"
 
 mkdir -p "${XDG_CONFIG_HOME}/bashrc.d"
 /usr/bin/starship init bash --print-full-init > "${XDG_CONFIG_HOME}/bashrc.d/starship.sh"
