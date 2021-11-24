@@ -4,10 +4,6 @@ source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
 my:step_begin "install dependencies"
 my:toolbox-run \
-    sudo dnf group install -y -q --with-optional \
-        'Development Tools' \
-        'C Development Tools and Libraries'
-my:toolbox-run \
     my:dnf_install \
         ncurses-devel \
         openssl-devel

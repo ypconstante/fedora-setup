@@ -210,15 +210,26 @@ my:git_checkout_last_tag() {
 
 ################################### TOOLBOX ####################################
 
-my:toolbox-run() {
-    local CONTAINER="fedora-setup-toolbox"
+
+my:toolbox-create() {
+    local CONTAINER="$1"
 
     if ! podman container exists "$CONTAINER"; then
         toolbox create -y "$CONTAINER"
         toolbox run -c "$CONTAINER" sudo dnf install -y glibc-langpack-en
+        toolbox run -c "$CONTAINER" \
+            sudo dnf group install -y -q --with-optional \
+                'Development Tools' \
+                'C Development Tools and Libraries'
+
     fi
 
-    podman container exists "$CONTAINER" || toolbox create -y "$CONTAINER"
+}
+
+my:toolbox-run() {
+    local CONTAINER="fedora-setup-toolbox"
+
+    my:toolbox-create "$CONTAINER"
 
     SCRIPT="source '$SCRIPTS_DIR/_base.sh';${*@Q};"
     toolbox run -c "$CONTAINER" bash -c "$SCRIPT"
