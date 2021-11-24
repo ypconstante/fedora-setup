@@ -5,18 +5,18 @@ source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 # https://github.com/pyenv/pyenv/wiki#suggested-build-environment
 # https://github.com/pyenv/pyenv/wiki/Common-build-problems
 my:step_begin "install python dependencies"
-my:dnf_install \
-    bzip2-devel \
-    openssl-devel \
-    patch \
-    readline-devel \
-    sqlite-devel \
-    zlib-devel
+my:toolbox-run \
+    my:dnf_install \
+        bzip2-devel \
+        openssl-devel \
+        readline-devel \
+        sqlite-devel
 my:step_end
 
 my:step_begin "install python"
 my:asdf_add_plugin python
-my:asdf_install_and_set_global python latest:3.10
+my:toolbox-run \
+    my:asdf_install_and_set_global python latest:3.10
 my:step_end
 
 export PIP_REQUIRE_VIRTUALENV=false
