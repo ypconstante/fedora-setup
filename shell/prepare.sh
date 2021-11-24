@@ -40,4 +40,5 @@ my:step_end
 my:step_begin "create common folders"
 mkdir -p "$HOME/.local/bin/"
 mkdir -p "$XDG_DATA_HOME/applications"
+mkdir -p "$XDG_DATA_HOME/systemd/user"
 my:step_end

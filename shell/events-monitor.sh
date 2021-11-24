@@ -7,7 +7,6 @@ my:dnf_install numlockx playerctl pulseaudio-utils
 my:step_end
 
 my:step_begin "install service"
-mkdir -p "${XDG_DATA_HOME}/systemd/user"
 bin_file="${HOME}/.local/bin/events-monitor"
 
 my:link_file "${ASSETS_DIR}/events--monitor.sh" "$bin_file"
