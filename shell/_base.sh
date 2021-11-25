@@ -32,6 +32,8 @@ export SCRIPTS_DIR=$(dirname "$BASE_FILE_PATH")
 export PROJECT_DIR=$(realpath "$SCRIPTS_DIR/..")
 export ASSETS_DIR=$(realpath "$PROJECT_DIR/assets")
 
+export TOOLBOX_CONTAINER="fedora-setup-toolbox"
+
 cd "$SCRIPTS_DIR"
 
 source /etc/os-release
@@ -210,31 +212,12 @@ my:git_checkout_last_tag() {
 
 ################################### TOOLBOX ####################################
 
-
-my:toolbox-create() {
-    local CONTAINER="$1"
-
-    if ! podman container exists "$CONTAINER"; then
-        toolbox create -y "$CONTAINER"
-        toolbox run -c "$CONTAINER" sudo dnf install -y glibc-langpack-en
-        toolbox run -c "$CONTAINER" \
-            sudo dnf group install -y -q --with-optional \
-                'Development Tools' \
-                'C Development Tools and Libraries'
-
-    fi
-
-}
-
 my:toolbox-run() {
-    local CONTAINER="fedora-setup-toolbox"
-
-    my:toolbox-create "$CONTAINER"
-
     SCRIPT="source '$SCRIPTS_DIR/_base.sh';${*@Q};"
-    toolbox run -c "$CONTAINER" bash -c "$SCRIPT"
 
-    podman container stop "$CONTAINER" 1> /dev/null
+    toolbox run -c "$TOOLBOX_CONTAINER" bash -c "$SCRIPT"
+
+    podman container stop "$TOOLBOX_CONTAINER" 1> /dev/null
 }
 
 #################################### PRINT #####################################

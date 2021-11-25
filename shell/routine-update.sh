@@ -9,3 +9,4 @@ my:step_end
 ./prepare.sh
 ./dev_asdf.sh
 ./terminal_fish.sh
+./toolbox_update.sh
