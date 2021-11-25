@@ -2,8 +2,12 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
+my:step_begin "install toolbox"
+my:dnf_install toolbox
+my:step_end
+
 if ! podman container exists "$TOOLBOX_CONTAINER"; then
-    my:step_begin "install toolbox"
+    my:step_begin "create '$$TOOLBOX_CONTAINER' container"
     toolbox create -y "$TOOLBOX_CONTAINER"
     my:step_end
 fi

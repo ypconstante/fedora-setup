@@ -2,7 +2,6 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
-
 my:step_begin "install cli tools"
 my:dnf_install \
     inotify-tools \
