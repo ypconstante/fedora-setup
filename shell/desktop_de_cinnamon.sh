@@ -5,10 +5,6 @@ source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 menu_applet_id=42
 menu_config_file="$HOME/.cinnamon/configs/menu@cinnamon.org/$menu_applet_id.json"
 
-my:step_begin "update cinnamon spices"
-cinnamon-spice-updater --update-all
-my:step_end
-
 my:step_begin "hide desktop icons"
 dconf write /org/nemo/desktop/desktop-layout "'false::false'"
 # still used by nemo to define if desktop will be shown in nemo's sidebar
