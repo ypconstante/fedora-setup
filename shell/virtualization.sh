@@ -3,7 +3,7 @@
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
 my:step_begin "install virtualization group"
-sudo dnf group install -y -q --with-optional virtualization
+my:dnf_install '@Virtualization'
 my:step_end
 
 my:step_begin "configure virtualization"
