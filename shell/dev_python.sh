@@ -5,12 +5,11 @@ source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 # https://github.com/pyenv/pyenv/wiki#suggested-build-environment
 # https://github.com/pyenv/pyenv/wiki/Common-build-problems
 my:step_begin "install python dependencies"
-my:toolbox-run \
-    my:dnf_install \
-        bzip2-devel \
-        openssl-devel \
-        readline-devel \
-        sqlite-devel
+my:toolbox-dnf-install \
+    bzip2-devel \
+    openssl-devel \
+    readline-devel \
+    sqlite-devel
 my:step_end
 
 my:step_begin "install python"

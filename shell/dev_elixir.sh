@@ -3,10 +3,9 @@
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
 my:step_begin "install dependencies"
-my:toolbox-run \
-    my:dnf_install \
-        ncurses-devel \
-        openssl-devel
+my:toolbox-dnf-install \
+    ncurses-devel \
+    openssl-devel
 my:step_end
 
 my:step_begin "install erlang"

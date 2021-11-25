@@ -219,6 +219,10 @@ my:toolbox-run() {
     podman container stop "$TOOLBOX_CONTAINER" 1> /dev/null
 }
 
+my:toolbox-dnf-install() {
+    my:toolbox-run my:dnf_install "$@"
+}
+
 #################################### PRINT #####################################
 
 # my:file_run
