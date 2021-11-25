@@ -84,7 +84,6 @@ my:link_file() {
 
     rm -f "${to}" 2> /dev/null || sudo rm -f "${to}"
     ln "${from}" "${to}" 2> /dev/null \
-        || sudo ln "${from}" "${to}" 2> /dev/null \
         || cp "${from}" "${to}" 2> /dev/null \
         || sudo cp "${from}" "${to}"
 }
