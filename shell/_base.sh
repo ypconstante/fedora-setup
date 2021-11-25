@@ -157,6 +157,10 @@ my:asdf_add_plugin() {
 }
 
 my:asdf_install_and_set_global() {
+    my:toolbox-run my:asdf_install_and_set_global_local "$@"
+}
+
+my:asdf_install_and_set_global_local() {
     local plugin="$1"
     local version="$2"
 

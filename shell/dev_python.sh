@@ -14,8 +14,7 @@ my:step_end
 
 my:step_begin "install python"
 my:asdf_add_plugin python
-my:toolbox-run \
-    my:asdf_install_and_set_global python latest:3.10
+my:asdf_install_and_set_global python latest:3.10
 my:step_end
 
 export PIP_REQUIRE_VIRTUALENV=false
