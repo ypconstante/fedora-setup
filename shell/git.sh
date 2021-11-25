@@ -39,12 +39,11 @@ git config --global core.excludesfile "$GIT_IGNORE_FILE"
 my:step_end
 
 
-my:step_begin "install delta"
-my:dnf_install git-delta
-my:step_end
-
-my:step_begin "install tig"
-my:dnf_install tig
+my:step_begin "install git tools"
+my:dnf_install \
+    git-delta \
+    meld \
+    tig
 mkdir -p "$XDG_DATA_HOME/tig"
 my:step_end
 
