@@ -38,7 +38,6 @@ cat "$ASSETS_DIR/git--ignore" >> "$GIT_IGNORE_FILE"
 git config --global core.excludesfile "$GIT_IGNORE_FILE"
 my:step_end
 
-
 my:step_begin "install git tools"
 my:dnf_install \
     git-delta \
@@ -46,6 +45,11 @@ my:dnf_install \
     tig
 mkdir -p "$XDG_DATA_HOME/tig"
 my:step_end
+
+my:step_begin "configure meld"
+dconf load /org/gnome/meld/ < "$ASSETS_DIR/git--meld.dconf"
+my:step_end
+
 
 my:step_begin "configure git"
 git config --global include.path "$ASSETS_DIR/git--config"
