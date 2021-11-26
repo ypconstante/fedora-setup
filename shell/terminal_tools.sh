@@ -21,6 +21,6 @@ tldr --update
 my:step_end
 
 my:step_begin "configure wget to follow xdg"
-my:append_to_file_if_not_contains "$XDG_CONFIG_HOME/wgetrc" "hsts-file = $XDG_STATE_HOME/wget-hsts"
+my:append_to_file_if_not_contains "$WGETRC" "hsts-file = $XDG_STATE_HOME/wget-hsts"
 rm -f "$HOME/.wget-hsts"
 my:step_end
