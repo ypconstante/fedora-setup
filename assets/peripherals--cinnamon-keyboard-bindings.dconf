@@ -1,5 +1,5 @@
 [/]
-custom-list=['custom0', 'custom1', 'custom2']
+custom-list=['custom0', 'custom1', 'custom2', 'custom3']
 looking-glass-keybinding=@as []
 magnifier-zoom-in=@as []
 magnifier-zoom-out=@as []
@@ -19,6 +19,11 @@ binding=['Print']
 command='flameshot gui'
 name='screenshot'
 
+[custom-keybindings/custom3]
+binding=['<Super>t']
+command='open-terminal'
+name='terminal'
+
 [media-keys]
 area-screenshot=@as []
 area-screenshot-clip=@as []
@@ -26,7 +31,7 @@ next=['XF86AudioNext', '<Primary>AudioPlay', '<Primary>grave']
 screensaver=['<Super>l', 'XF86ScreenSaver']
 screenshot=@as []
 screenshot-clip=@as []
-terminal=['<Super>t']
+terminal=@as []
 window-screenshot=@as []
 window-screenshot-clip=@as []
 
