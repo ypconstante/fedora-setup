@@ -29,8 +29,8 @@ export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf"
 export ASDF_DATA_DIR="$XDG_LIB_HOME/asdf"
 export ASDF_PATHS="$ASDF_DATA_DIR/shims:$XDG_DATA_HOME/asdf/bin"
 
-# Docker
-export DOCKER_HOST="unix:///run/user/1000/docker.sock"
+# Podman / Docker
+export DOCKER_HOST="unix:///run/user/$UID/podman/podman.sock"
 
 # Node
 export NODE_REPL_HISTORY="$XDG_STATE_HOME/node_repl_history"
