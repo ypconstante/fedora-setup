@@ -62,4 +62,3 @@ Configure Chromium:
 
 Optional - Gaming:
 - Run `~/projects/personal/fedora-setup/shell/gaming.sh`
-- Configure Steam to download into `~/Gaming/Steam`
