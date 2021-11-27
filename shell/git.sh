@@ -2,7 +2,6 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
-DEFAULT_CONFIG_FILE="$HOME/.gitconfig"
 CONFIG_DIR=$XDG_CONFIG_HOME/git
 CONFIG_FILE=$CONFIG_DIR/config
 GIT_IGNORE_FILE=$CONFIG_DIR/gitignore
@@ -12,12 +11,6 @@ my:dnf_install git
 my:step_end
 
 my:step_begin "make git respected xdg spec"
-mkdir -p "$CONFIG_DIR"
-
-if [ -f $DEFAULT_CONFIG_FILE ]; then
-    mv $DEFAULT_CONFIG_FILE "$CONFIG_FILE"
-fi
-
 my:create_file "$CONFIG_FILE"
 my:create_file "$CONFIG_DIR/credentials"
 my:step_end
