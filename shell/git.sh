@@ -4,7 +4,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
 CONFIG_DIR=$XDG_CONFIG_HOME/git
 CONFIG_FILE=$CONFIG_DIR/config
-GIT_IGNORE_FILE=$CONFIG_DIR/gitignore
+GIT_IGNORE_FILE=$CONFIG_DIR/ignore
 
 my:step_begin "install git"
 my:dnf_install git
@@ -28,7 +28,6 @@ my:step_begin "create gitignore"
 curl -sS https://www.toptal.com/developers/gitignore/api/dotenv,git,linux,jetbrains+all,sublimetext -o "$GIT_IGNORE_FILE"
 echo -e "\n" >> "$GIT_IGNORE_FILE"
 cat "$ASSETS_DIR/git--ignore" >> "$GIT_IGNORE_FILE"
-git config --global core.excludesfile "$GIT_IGNORE_FILE"
 my:step_end
 
 my:step_begin "install git tools"
