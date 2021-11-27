@@ -30,6 +30,7 @@ Configure git:
 - `git config --global user.name "Your Name"`
 - [Create git ssh key](https://github.com/ypconstante/fedora-setup/wiki#create-ssh-key)
 - [Create git gpg key](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-gpg-key)
+- `cd ~/projects/personal/fedora-setup/ && git remote set-url origin git@github.com:ypconstante/fedora-setup.git`
 
 Configure Firefox:
 - Delete default bookmarks

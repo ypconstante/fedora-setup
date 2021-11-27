@@ -3,7 +3,6 @@
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
 CONFIG_DIR=$XDG_CONFIG_HOME/git
-CONFIG_FILE=$CONFIG_DIR/config
 GIT_IGNORE_FILE=$CONFIG_DIR/ignore
 
 my:step_begin "install git"
@@ -11,7 +10,7 @@ my:dnf_install git
 my:step_end
 
 my:step_begin "make git respected xdg spec"
-my:create_file "$CONFIG_FILE"
+my:create_file "$CONFIG_DIR/config"
 my:create_file "$CONFIG_DIR/credentials"
 my:step_end
 
@@ -46,9 +45,4 @@ my:step_end
 my:step_begin "configure git"
 git config --global include.path "$ASSETS_DIR/git--config"
 git config --global commit.template "$ASSETS_DIR/git--commit-template"
-my:step_end
-
-my:step_begin "configure current repo"
-cd "$PROJECT_DIR"
-git remote set-url origin git@github.com:ypconstante/fedora-setup.git
 my:step_end
