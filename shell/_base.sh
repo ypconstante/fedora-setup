@@ -36,8 +36,6 @@ export TOOLBOX_CONTAINER="fedora-setup-toolbox"
 
 cd "$SCRIPTS_DIR"
 
-source /etc/os-release
-
 source "$ASSETS_DIR/base--env"
 
 #################################### FILE #####################################
