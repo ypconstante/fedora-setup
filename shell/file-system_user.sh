@@ -2,28 +2,19 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
-my:step_begin "documents folder lower case"
+my:step_begin "create new folders"
+mkdir -p "$HOME/media" "$HOME/projects/personal" "$HOME/projects/sandbox"
+my:step_end
+
+my:step_begin "change home folder structure"
+xdg-user-dirs-update --set DESKTOP "$HOME"
+rm -rf "$HOME/Desktop"
+
 mv "$HOME/Documents" "$HOME/documents"
 xdg-user-dirs-update --set DOCUMENTS "$HOME/documents"
-my:step_end
 
-my:step_begin "downloads lower case"
 mv "$HOME/Downloads" "$HOME/downloads"
 xdg-user-dirs-update --set DOWNLOAD "$HOME/downloads"
-my:step_end
-
-my:step_begin "create base project structure"
-mkdir -p "$HOME/projects/personal"
-mkdir -p "$HOME/projects/sandbox"
-my:step_end
-
-my:step_begin "move templates folder"
-mv "$HOME/Templates" "$HOME/.local/template-files"
-xdg-user-dirs-update --set TEMPLATES "$HOME/.local/template-files"
-my:step_end
-
-my:step_begin "create media folder"
-mkdir -p "$HOME/media"
 
 xdg-user-dirs-update --set MUSIC "$HOME/media"
 rm -rf "$HOME/Music"
@@ -31,16 +22,14 @@ rm -rf "$HOME/Music"
 xdg-user-dirs-update --set PICTURES "$HOME/media"
 rm -rf "$HOME/Pictures"
 
-xdg-user-dirs-update --set VIDEOS "$HOME/media"
-rm -rf "$HOME/Videos"
-my:step_end
-
-my:step_begin "remove non used xdg folders"
-xdg-user-dirs-update --set DESKTOP "$HOME"
-rm -rf "$HOME/Desktop"
-
 xdg-user-dirs-update --set PUBLICSHARE "$(xdg-user-dir DOWNLOAD)"
 rm -rf "$HOME/Public"
+
+mv "$HOME/Templates" "$HOME/.local/template-files"
+xdg-user-dirs-update --set TEMPLATES "$HOME/.local/template-files"
+
+xdg-user-dirs-update --set VIDEOS "$HOME/media"
+rm -rf "$HOME/Videos"
 my:step_end
 
 my:step_begin "create bookmark"
