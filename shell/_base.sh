@@ -228,13 +228,11 @@ my:step_begin() {
 
     if [ -z "${step-}" ]; then
         my:echo_error 'step name not given'
-    fi
-
-    if [ -z "${current_step-}" ]; then
+    elif [ -n "${current_step-}" ]; then
+        my:echo_error "can't start step '${step}', step '${current_step}' not ended"
+    else
         current_step="${step}"
         my:step_echo "start: ${current_step}"
-    else
-        my:echo_error "can't start step '${step}', step '${current_step}' not ended"
     fi
 }
 
