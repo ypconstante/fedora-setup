@@ -1,0 +1,21 @@
+[plugins]
+disabled-actions=['new-launcher.nemo_action', 'set-as-background.nemo_action', 'add-desklets.nemo_action', 'change-background.nemo_action', 'send-by-mail.nemo_action']
+disabled-extensions=['ChangeFolderColor+NemoPython', 'EmblemPropertyPage+NemoPython', 'NemoShare']
+
+[preferences]
+click-policy='single'
+enable-delete=false
+executable-text-activation='ask'
+ignore-view-metadata=true
+show-compact-view-icon-toolbar=false
+show-directory-item-counts='never'
+show-edit-icon-toolbar=false
+show-hidden-files=true
+show-image-thumbnails='local-only'
+show-open-in-terminal-toolbar=true
+show-search-icon-toolbar=false
+
+[preferences/menu-config]
+background-menu-scripts=false
+selection-menu-pin=false
+selection-menu-scripts=false
