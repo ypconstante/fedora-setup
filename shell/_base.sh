@@ -15,9 +15,7 @@ else
     fi
 fi
 
-set -e
-sudo true
-set +e
+sudo true || exit
 
 if [ "${#BASH_SOURCE[@]}" == 1 ]; then
     # _base not called by another script, for example my:toolbox-run
