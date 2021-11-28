@@ -11,68 +11,8 @@ dconf write /org/nemo/desktop/desktop-layout "'false::false'"
 dconf write /org/nemo/desktop/show-desktop-icons false
 my:step_end
 
-my:step_begin "change theme"
-dconf write /org/cinnamon/desktop/wm/preferences/theme "'Mint-Y-Dark'"
-dconf write /org/cinnamon/desktop/interface/gtk-theme "'Mint-Y-Darker'"
-dconf write /org/cinnamon/desktop/interface/icon-theme "'Mint-Y'"
-dconf write /org/cinnamon/theme/name "'Mint-Y-Dark'"
-my:step_end
-
-my:step_begin "modify taskbar"
-# position
-dconf write /org/cinnamon/panels-enabled "['1:0:right']"
-
-# size
-dconf write /org/cinnamon/panels-height "['1:40']"
-
-# taskbar elements
-dconf write /org/cinnamon/enabled-applets "[
- 'panel1:left:0:menu@cinnamon.org:$menu_applet_id',
- 'panel1:left:10:grouped-window-list@cinnamon.org',
- 'panel1:right:0:workspace-switcher@cinnamon.org',
- 'panel1:right:5:spacer@cinnamon.org',
- 'panel1:right:10:systray@cinnamon.org',
- 'panel1:right:15:xapp-status@cinnamon.org',
- 'panel1:right:20:network@cinnamon.org',
- 'panel1:right:30:sound@cinnamon.org',
- 'panel1:right:40:power@cinnamon.org',
- 'panel1:right:50:notifications@cinnamon.org',
- 'panel1:right:60:calendar@cinnamon.org'
-]"
-# hide taskbar
-dconf write /org/cinnamon/panels-autohide "['1:intel']"
-my:step_end
-
-my:step_begin "modify background"
-dconf write /org/cinnamon/desktop/background/picture-uri "'file:///usr/share/backgrounds/tiles/default_blue.jpg'"
-dconf write /org/cinnamon/desktop/background/picture-options "'zoom'"
-my:step_end
-
-my:step_begin "modify windows"
-dconf write /org/cinnamon/desktop/wm/preferences/button-layout "'close,minimize:'"
-dconf write /org/cinnamon/desktop/wm/preferences/focus-mode "'click'"
-dconf write /org/cinnamon/prevent-focus-stealing true
-dconf write /org/cinnamon/desktop-effects false
-my:step_end
-
-my:step_begin "modify alt tab switcher"
-dconf write /org/cinnamon/alttab-switcher-style "'icons+preview'"
-dconf write /org/cinnamon/alttab-minimized-aware true
-dconf write /org/cinnamon/alttab-switcher-enforce-primary-monitor true
-my:step_end
-
-my:step_begin "modify workspaces"
-dconf write /org/cinnamon/desktop/wm/preferences/num-workspaces 3
-dconf write /org/cinnamon/muffin/workspace-cycle true
-dconf write /org/cinnamon/workspace-osd-visible false
-my:step_end
-
-my:step_begin "modify screen lock"
-dconf write /org/cinnamon/desktop/screensaver/allow-keyboard-shortcuts false
-dconf write /org/cinnamon/desktop/screensaver/allow-media-control false
-dconf write /org/cinnamon/desktop/screensaver/show-album-art false
-dconf write /org/cinnamon/desktop/screensaver/show-info-panel false
-dconf write /org/cinnamon/desktop/screensaver/floating-widgets false
+my:step_begin "load config"
+dconf load /org/cinnamon/ < "$ASSETS_DIR/desktop_de_cinnamon--config.dconf"
 my:step_end
 
 my:step_begin "modify menu"
@@ -87,8 +27,4 @@ jq 'setpath(["search-filesystem", "value"]; false)' < "$menu_config_file" \
 mv "$menu_config_file.tmp" "$menu_config_file"
 
 my:link_file "$ASSETS_DIR/desktop_de_cinnamon--menu.menu" "$XDG_CONFIG_HOME/menus/cinnamon-applications.menu"
-my:step_end
-
-my:step_begin "disable recent files"
-dconf write /org/cinnamon/desktop/privacy/remember-recent-files false
 my:step_end
