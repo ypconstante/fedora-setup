@@ -20,13 +20,11 @@ my:step_end
 my:step_begin "update flatpak packages"
 sudo flatpak uninstall -y --unused
 sudo flatpak update -y
-sudo flatpak uninstall -y --unused
 my:step_end
 
 my:step_begin "update dnf packages"
 sudo dnf autoremove -y -q
 sudo dnf update -y
-sudo dnf autoremove -y -q
 my:step_end
 
 my:step_begin "update firmwares"
