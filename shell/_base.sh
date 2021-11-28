@@ -97,15 +97,14 @@ my:wait_file() {
     until [ -f "$file" ]; do
         sleep 1
         ((time_waiting++))
-        if [[ $time_waiting -eq 2 ]]; then
-            my:echo_without_line_break "Waiting file '$file' to be created "
-        elif [[ $time_waiting -gt 2 ]]; then
-            my:echo_without_line_break "#"
-        fi
         if [[ $time_waiting -gt 20 ]]; then
             echo ''
-            my:echo_error 'File still not created after 20 '
+            my:echo_error 'File not created after 20 seconds'
             return 1
+        elif [[ $time_waiting -eq 2 ]]; then
+            my:echo_without_line_break "Waiting for file '$file' to be created "
+        elif [[ $time_waiting -gt 2 ]]; then
+            my:echo_without_line_break "#"
         fi
     done
 
