@@ -7,8 +7,7 @@ my:dnf_install \
     podman \
     podman-docker \
     podman-compose \
-    docker-compose \
-    containerd.io
+    docker-compose
 my:step_end
 
 my:step_begin "enable podman with docker-compose"
