@@ -30,8 +30,6 @@ export SCRIPTS_DIR=$(dirname "$BASE_FILE_PATH")
 export PROJECT_DIR=$(realpath "$SCRIPTS_DIR/..")
 export ASSETS_DIR=$(realpath "$PROJECT_DIR/assets")
 
-export TOOLBOX_CONTAINER="fedora-setup-toolbox"
-
 cd "$SCRIPTS_DIR"
 
 source "$ASSETS_DIR/base--env"
