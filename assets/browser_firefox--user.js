@@ -1483,20 +1483,32 @@ user_pref("browser.cache.offline.storage.enable", false); // [DEFAULT: false FF8
 /* END: internal custom pref to test for syntax errors ***/
 user_pref("_user.js.parrot", "SUCCESS: No no he's not dead, he's, he's restin'!");
 
-// GHACKS OVERRIDES
+// OVERRIDES
 user_pref("_user.js.parrot", "overrides section syntax error");
+
+/* recipes - https://github.com/arkenfox/user.js/issues/1080 */
+/* override recipe: enable DRM and let me watch videos ***/
+user_pref("media.eme.enabled", true); // 2022
+
+/* override recipe: enable session restore ***/
 user_pref("browser.startup.page", 3); // 0102
+user_pref("network.cookie.lifetimePolicy", 0); // 2801
+user_pref("privacy.clearOnShutdown.cookies", false); // 2811
+user_pref("privacy.clearOnShutdown.history", false); // 2811
+user_pref("privacy.clearOnShutdown.sessions", false); // 2811
+
+/* override-recipe: desktop: alter new window max sizes **/
+user_pref("privacy.window.maxInnerWidth", 1600); // 4502
+user_pref("privacy.window.maxInnerHeight", 1000);
+
 user_pref("browser.startup.homepage", "about:newtab"); // 0103
 user_pref("browser.newtabpage.enabled", true); // 0104
 user_pref("browser.newtab.preload", true); // 0104
 user_pref("keyword.enabled", true); // 0801
 user_pref("browser.urlbar.suggest.searches", true); // 0804
 user_pref("layout.css.visited_links_enabled", false); // 0810
-user_pref("browser.sessionstore.interval", 300000); // 1004
-user_pref("browser.shell.shortcutFavicons", true); // 1006
-user_pref("media.gmp-widevinecdm.visible", true); // 2021
-user_pref("media.gmp-widevinecdm.enabled", true); // 2021
-user_pref("media.eme.enabled", true); // 2022
+user_pref("browser.sessionstore.interval", 120000); // 1004
+user_pref("browser.shell.shortcutFavicons", true); // 1006\
 user_pref("media.autoplay.default", 1); // 2030
 user_pref("dom.webnotifications.enabled", false); // 2304
 user_pref("dom.webnotifications.serviceworker.enabled", false); // 2304
@@ -1505,10 +1517,6 @@ user_pref("devtools.chrome.enabled", true); // 2607
 user_pref("devtools.debugger.remote-enabled", true); // 2608
 user_pref("network.cookie.cookieBehavior", 4); // 2701
 user_pref("dom.caches.enabled", false); // 2740
-user_pref("network.cookie.lifetimePolicy", 0); // 2801
-user_pref("privacy.clearOnShutdown.cookies", false); // 2803
-user_pref("privacy.clearOnShutdown.history", false); // 2803
-user_pref("privacy.clearOnShutdown.sessions", false); // 2803
 user_pref("browser.display.use_document_fonts", 1); // 8002
 
 // fix jira login with google account
