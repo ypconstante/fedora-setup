@@ -28,7 +28,3 @@ sed -Ei '/#/!s|(.*set --append conflict_files)|#\1|' "$XDG_CONFIG_HOME/fish/func
 my:link_file "$ASSETS_DIR/terminal_fish--fisher_plugins" "$XDG_CONFIG_HOME/fish/fish_plugins"
 fish -c "fisher update"
 my:step_end
-
-my:step_begin "init universal config"
-find "$ASSETS_DIR/terminal_fish--config/universal-conf.d/" -name '*.fish' -exec fish '{}' \;
-my:step_end
