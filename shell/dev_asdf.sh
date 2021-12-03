@@ -17,7 +17,6 @@ asdf plugin-update --all
 my:step_end
 
 my:step_begin "fish config"
-my:link_file "$ASDF_DIR/asdf.fish" "$HOME/projects/personal/fish-local/conf.d/asdf.fish"
 my:link_file "$ASDF_DIR/completions/asdf.fish" "$HOME/projects/personal/fish-local/completions/asdf.fish"
 sed -E "s| asdf | asdf-toolbox |" "$ASDF_DIR/completions/asdf.fish" \
     > "$HOME/projects/personal/fish-local/completions/asdf-toolbox.fish"
