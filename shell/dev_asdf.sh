@@ -4,7 +4,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
 my:step_begin "install asdf"
 my:git_clone https://github.com/asdf-vm/asdf.git "$ASDF_DIR"
-asdf update --head
+asdf update
 my:step_end
 
 my:step_begin "config asdf"
