@@ -178,7 +178,14 @@ my:git_clone() {
     if [ -d "$DIRECTORY" ]; then
         my:echo_substep "Updating repo '$DIRECTORY'"
         git -C "$DIRECTORY" remote set-url origin "$REPOSITORY"
-        git -C "$DIRECTORY" pull --rebase --prune
+        local CURRENT_BRANCH=$(git -C "$DIRECTORY" symbolic-ref --short -q HEAD)
+        if [ -n "$CURRENT_BRANCH" ]; then
+            echo "Pulling changes"
+            git -C "$DIRECTORY" pull --rebase --prune
+        else
+            echo "Fetching changes"
+            git -C "$DIRECTORY" fetch --prune
+        fi
     else
         git clone "$REPOSITORY" "$DIRECTORY"
     fi
