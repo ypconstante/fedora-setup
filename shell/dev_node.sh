@@ -4,8 +4,6 @@ source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
 my:step_begin "install node"
 my:asdf_add_plugin nodejs
-my:echo_substep "Importing node keys"
-$ASDF_DATA_DIR/plugins/nodejs/bin/import-release-team-keyring &> /dev/null
 my:asdf_install_and_set_global nodejs latest:14
 my:asdf_install_and_set_global nodejs latest:16
 my:step_end
