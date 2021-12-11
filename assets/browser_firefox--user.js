@@ -1542,6 +1542,8 @@ user_pref("mousewheel.with_control.action", 1);
 // disable media keys integration
 user_pref("media.hardwaremediakeys.enabled", false);
 
+// disable picture-in-picture toggle
+user_pref("media.videocontrols.picture-in-picture.video-toggle.enabled", false);
 
 // reset options
 
