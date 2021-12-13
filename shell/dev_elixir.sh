@@ -5,7 +5,13 @@ source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 my:step_begin "install dependencies"
 my:toolbox-dnf-install \
     ncurses-devel \
-    openssl-devel
+    openssl-devel \
+    wxGTK3-devel
+
+my:dnf_install \
+    wxGTK3 \
+    wxGTK3-gl \
+    wxGTK3-webview
 my:step_end
 
 my:step_begin "install erlang"
