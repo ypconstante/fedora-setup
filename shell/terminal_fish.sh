@@ -28,3 +28,7 @@ sed -Ei '/#/!s|(.*set --append conflict_files)|#\1|' "$XDG_CONFIG_HOME/fish/func
 my:link_file "$ASSETS_DIR/terminal_fish--fisher_plugins" "$XDG_CONFIG_HOME/fish/fish_plugins"
 fish -c "fisher update"
 my:step_end
+
+my:step_begin "clear removed directories from j"
+fish -c "j --clean"
+my:step_end
