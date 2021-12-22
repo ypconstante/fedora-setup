@@ -61,5 +61,7 @@ Configure Chromium:
 
 [Install Nvidia drivers](https://rpmfusion.org/Howto/NVIDIA)
 
+Configure backup on Vorta
+
 Optional - Gaming:
 - Run `~/projects/personal/fedora-setup/shell/gaming.sh`
