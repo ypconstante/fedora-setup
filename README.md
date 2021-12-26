@@ -40,6 +40,7 @@ Configure Firefox:
 - Import extensions config
 - Enable H264 plugin
 - Remove additional search engines
+- Add cookie exception
 
 Configure JetBrains Toolbox:
 - Sign in

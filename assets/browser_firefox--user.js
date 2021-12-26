@@ -1429,9 +1429,9 @@ user_pref("media.eme.enabled", true); // 2022
 
 /* override recipe: enable session restore ***/
 user_pref("browser.startup.page", 3); // 0102
-user_pref("network.cookie.lifetimePolicy", 0); // 2801
 user_pref("privacy.clearOnShutdown.history", false); // 2811
 user_pref("privacy.clearOnShutdown.sessions", false); // 2811
+user_pref("privacy.cpd.history", false); // 2812
 
 user_pref("browser.startup.homepage", "about:newtab"); // 0103
 user_pref("browser.newtabpage.enabled", true); // 0104
