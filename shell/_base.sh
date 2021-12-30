@@ -89,7 +89,7 @@ my:copy-file() {
     my:create_parent_dirs "$TO"
 
     cp "$FROM" "$TO" 2> /dev/null \
-        || sudo cp "$FROM" "${to}"
+        || sudo cp "$FROM" "$TO"
 }
 
 my:run_files() {
