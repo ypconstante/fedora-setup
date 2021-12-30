@@ -2,6 +2,8 @@ function __fedora_setup.init
     function __fedora_setup.aliases
         abbr -aU -- - 'cd -'
 
+        alias -s copy="xclip -selection clipboard"
+
         # git
         abbr -aU g- 'git switch -'
         abbr -aU gcls git clone --depth 1 --shallow-submodules
