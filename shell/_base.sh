@@ -82,6 +82,16 @@ my:link_file() {
         || sudo cp "${from}" "${to}"
 }
 
+my:copy-file() {
+    local FROM="$1"
+    local TO="$2"
+
+    my:create_parent_dirs "$TO"
+
+    cp "$FROM" "$TO" 2> /dev/null \
+        || sudo cp "$FROM" "${to}"
+}
+
 my:run_files() {
     sort -zn | xargs -0 -I '{}' bash '{}' \;
 }
