@@ -71,15 +71,13 @@ my:file_contains_line() {
 }
 
 my:link_file() {
-    local from="$1"
-    local to="$2"
+    local FROM="$1"
+    local TO="$2"
 
-    my:create_parent_dirs "${to}"
+    my:create_parent_dirs "$TO"
 
-    rm -f "${to}" 2> /dev/null || sudo rm -f "${to}"
-    ln "${from}" "${to}" 2> /dev/null \
-        || cp "${from}" "${to}" 2> /dev/null \
-        || sudo cp "${from}" "${to}"
+    ln -f "$FROM" "$TO" \
+        || (rm -f "$TO" && cp "$FROM" "$TO")
 }
 
 my:copy-file() {
@@ -88,6 +86,7 @@ my:copy-file() {
 
     my:create_parent_dirs "$TO"
 
+    rm -f "$TO" 2> /dev/null || sudo rm -f "$TO"
     cp "$FROM" "$TO" 2> /dev/null \
         || sudo cp "$FROM" "$TO"
 }
