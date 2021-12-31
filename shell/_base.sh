@@ -77,7 +77,8 @@ my:link_file() {
     my:create_parent_dirs "$TO"
 
     ln -f "$FROM" "$TO" \
-        || (rm -f "$TO" && cp "$FROM" "$TO")
+        || cp "$FROM" "$TO" 2> /dev/null \
+        || cp "$FROM" "$TO"
 }
 
 my:copy-file() {
@@ -86,8 +87,8 @@ my:copy-file() {
 
     my:create_parent_dirs "$TO"
 
-    rm -f "$TO" 2> /dev/null || sudo rm -f "$TO"
     cp "$FROM" "$TO" 2> /dev/null \
+        || sudo cp "$FROM" "$TO" 2> /dev/null \
         || sudo cp "$FROM" "$TO"
 }
 
