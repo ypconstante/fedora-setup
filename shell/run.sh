@@ -23,6 +23,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 ./graphics.sh
 ./media.sh
 ./memory.sh
+./network.sh
 ./peripherals.sh
 ./screen-capture.sh
 ./sound.sh
