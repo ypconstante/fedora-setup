@@ -34,6 +34,5 @@ my:step_end
 
 my:step_begin "enable h264 codec"
 # https://docs.fedoraproject.org/en-US/quick-docs/openh264/
-sudo dnf config-manager --set-enabled fedora-cisco-openh264
 my:dnf_install gstreamer1-plugin-openh264 mozilla-openh264
 my:step_end
