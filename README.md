@@ -29,7 +29,7 @@ Configure git:
 - `git config --global user.email "you@example.com"`
 - `git config --global user.name "Your Name"`
 - [Create git ssh key](https://github.com/ypconstante/fedora-setup/wiki#create-ssh-key)
-- [Create git gpg key](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-gpg-key)
+- Import GPG keys
 - `cd ~/projects/personal/fedora-setup/ && git remote set-url origin git@github.com:ypconstante/fedora-setup.git`
 
 Configure Firefox:
@@ -38,6 +38,7 @@ Configure Firefox:
 - Sign in
 - Change theme to dark compact
 - Import extensions config
+- Enable extensions on private window
 - Enable H264 plugin
 - Remove additional search engines
 - Add cookie exception
@@ -57,8 +58,10 @@ Sign in or add license to:
 - Sublime Merge
 - Sublime Text
 
-Configure Chromium:
+Configure Chromium and Chrome:
 - Change search engine to DDG
+- Enable Enhanced protection
+- Install uBlock Origin
 
 [Install Nvidia drivers](https://rpmfusion.org/Howto/NVIDIA)
 
