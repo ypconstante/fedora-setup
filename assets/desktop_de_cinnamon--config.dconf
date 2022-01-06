@@ -47,7 +47,7 @@ clock-show-seconds=false
 cursor-blink-time=1200
 cursor-size=23
 gtk-im-module='gtk-im-context-simple:xim'
-gtk-theme='Mint-Y-Darker'
+gtk-theme='Mint-Y-Dark'
 icon-theme='Mint-Y'
 scaling-factor=uint32 0
 toolkit-accessibility=false
@@ -75,7 +75,7 @@ maximum-volume=125
 button-layout='close,minimize:'
 focus-mode='click'
 num-workspaces=3
-theme='Mint-Y-Dark'
+theme='Mint-Y'
 
 [muffin]
 workspace-cycle=true

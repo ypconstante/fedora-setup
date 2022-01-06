@@ -27,7 +27,7 @@ color_purple="'#ab9df2'"
 color_cyan="'#78dce8'"
 color_completion="'#9e9c8b'"
 color_white="'#f8f8f2'"
-color_background="'#2f2f2f'"
+color_background="'#2b2b2b'"
 color_foreground="$color_white"
 
 dset palette "[$color_background, $color_red, $color_green, $color_yellow, $color_blue, $color_purple, $color_cyan, $color_white, $color_completion, $color_red, $color_green, $color_yellow, $color_blue, $color_purple, $color_cyan, $color_white]"
