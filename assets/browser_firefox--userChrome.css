@@ -68,8 +68,8 @@ findbar {
 /* fixed width  */
 #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"],
 #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"] {
-    min-width: 320px !important;
-    max-width: 320px !important;
+    min-width: 316px !important;
+    max-width: 316px !important;
     border-right: none;
 }
 
