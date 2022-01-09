@@ -3,10 +3,10 @@
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
 APP_NAME=org.x.Warpinator
-my:step_begin "install wrapinator"
+my:step_begin "install warpinator"
 my:flatpak_install $APP_NAME
 
-my:step_begin "configure wrapinator"
+my:step_begin "configure warpinator"
 flatpak override --user $APP_NAME --reset
 flatpak override --user $APP_NAME \
     --nofilesystem=home \
