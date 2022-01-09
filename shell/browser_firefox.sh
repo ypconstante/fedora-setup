@@ -11,7 +11,7 @@ if [[ ! -d "$PROFILE_DIR" ]]; then
 fi
 
 my:step_begin "close firefox"
-killall -9 -q firefox
+pkill -f firefox
 my:step_end
 
 my:step_begin "config firefox"
