@@ -28,5 +28,3 @@ fish -c "fisher update"
 my:step_begin "configure fish plugins"
 # remove deleted folders from j
 fish -c "j --clean"
-# init fish-abbreviation-tips
-fish -c "__abbr_tips_init"
