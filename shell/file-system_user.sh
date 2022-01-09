@@ -4,7 +4,6 @@ source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
 my:step_begin "create new folders"
 mkdir -p "$HOME/media" "$HOME/projects/personal" "$HOME/projects/sandbox"
-my:step_end
 
 my:step_begin "change home folder structure"
 xdg-user-dirs-update --set DESKTOP "$HOME"
@@ -30,7 +29,6 @@ xdg-user-dirs-update --set TEMPLATES "$HOME/.local/template-files"
 
 xdg-user-dirs-update --set VIDEOS "$HOME/media"
 rm -rf "$HOME/Videos"
-my:step_end
 
 my:step_begin "create bookmark"
 {
@@ -39,10 +37,8 @@ my:step_begin "create bookmark"
     echo "file://$HOME/media Media"
     echo "file://$HOME/projects Projects"
 } > "$XDG_CONFIG_HOME/gtk-3.0/bookmarks"
-my:step_end
 
 my:step_begin "fix gnupg permissions"
 mkdir -p "$HOME/.gnupg"
 find "$HOME/.gnupg" -type d -exec chmod 700 {} \;
 find "$HOME/.gnupg" -type f -exec chmod 600 {} \;
-my:step_end

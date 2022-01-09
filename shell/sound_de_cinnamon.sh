@@ -12,4 +12,3 @@ dconf write /org/cinnamon/sounds/minimize-enabled false
 dconf write /org/cinnamon/sounds/maximize-enabled false
 dconf write /org/cinnamon/sounds/unmaximize-enabled false
 dconf write /org/cinnamon/sounds/tile-enabled false
-my:step_end

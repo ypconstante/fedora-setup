@@ -240,32 +240,17 @@ my:step_begin() {
 
     if [ -z "${step-}" ]; then
         my:echo_error 'step name not given'
-    elif [ -n "${current_step-}" ]; then
-        my:echo_error "can't start step '${step}', step '${current_step}' not ended"
     else
-        current_step="${step}"
-        my:step_echo "start: ${current_step}"
+        my:echo_step "start: ${step}"
     fi
 }
 
-my:step_end() {
-    if [ -n "${current_step-}" ]; then
-        my:step_echo "done: ${current_step}"
-        echo ''
-        unset current_step
-    else
-        my:echo_error "no step to end"
-    fi
-}
-
-
-my:step_echo() {
+# my:echo
+my:echo_step() {
     local message="$1"
     echo "$(tput setab 7)$(tput setaf 0)${message}$(tput el)$(tput sgr0)"
 }
 
-
-# my:echo
 my:echo_substep() {
     local message="$1"
     echo "$(tput bold)$(tput setaf 4)${message}$(tput el)$(tput sgr0)"

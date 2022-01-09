@@ -45,7 +45,6 @@ dset default-size-columns 150
 dset default-size-rows 40
 
 dconf write /org/gnome/terminal/legacy/default-show-menubar false
-my:step_end
 
 my:step_begin "configure shortcuts"
 dconf write /org/gnome/terminal/legacy/keybindings/new-tab "'<Primary>t'"
@@ -58,9 +57,7 @@ dconf write /org/gnome/terminal/legacy/keybindings/find-previous "'<Primary>h'"
 dconf write /org/gnome/terminal/legacy/keybindings/find-clear "'<Primary>j'"
 dconf write /org/gnome/terminal/legacy/keybindings/next-tab "'<Primary>Tab'"
 dconf write /org/gnome/terminal/legacy/keybindings/prev-tab "'<Primary><Shift>Tab'"
-my:step_end
 
 my:step_begin "use fish"
 dset use-custom-command true
 dset custom-command "'$(command -v fish)'"
-my:step_end

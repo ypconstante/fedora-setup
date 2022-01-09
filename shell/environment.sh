@@ -4,4 +4,3 @@ source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
 my:step_begin "config environment variables"
 my:link_file "$ASSETS_DIR/base--env" "$HOME/.profile"
-my:step_end
