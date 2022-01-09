@@ -46,17 +46,18 @@ function __fedora_setup.init
         set -U fish_pager_color_description $comment
     end
 
-    function __fedora_setup.z
+    function __fedora_setup.plugins
+        # jethrokuan/z
         set -U Z_CMD "j"
         set -U Z_OWNER (whoami)
     end
 
     __fedora_setup.aliases
     __fedora_setup.theme
-    __fedora_setup.z
+    __fedora_setup.plugins
 
 
   functions -e __fedora_setup.aliases
   functions -e __fedora_setup.theme
-  functions -e __fedora_setup.z
+  functions -e __fedora_setup.plugins
 end
