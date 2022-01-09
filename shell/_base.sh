@@ -225,6 +225,7 @@ my:file_run_begin() {
 
 my:file_run_end() {
     local file="$1"
+    echo ''
     my:file_run_echo "FILE END: ${file}"
     echo ''
 }
@@ -241,7 +242,8 @@ my:step_begin() {
     if [ -z "${step-}" ]; then
         my:echo_error 'step name not given'
     else
-        my:echo_step "start: ${step}"
+        echo ''
+        my:echo_step "step: ${step}"
     fi
 }
 
