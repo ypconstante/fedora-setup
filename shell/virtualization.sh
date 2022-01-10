@@ -5,6 +5,9 @@ source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 my:step_begin "install virtualization group"
 my:dnf_install '@Virtualization'
 
+my:step_begin "install gnome-boxes"
+my:dnf_install gnome-boxes
+
 my:step_begin "configure virtualization"
 sudo systemctl start libvirtd
 sudo systemctl enable libvirtd
