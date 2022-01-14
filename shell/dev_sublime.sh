@@ -6,6 +6,7 @@ sublime_config_dir=$XDG_CONFIG_HOME/sublime-text-3
 preferences_file="$sublime_config_dir/Packages/User/Preferences.sublime-settings"
 package_control_file="$sublime_config_dir/Installed Packages/Package Control.sublime-package"
 package_control_config_file="$sublime_config_dir/Packages/User/Package Control.sublime-settings"
+sublime_linter_config_file="$sublime_config_dir/Packages/User/SublimeLinter.sublime-settings"
 
 my:step_begin "add sublime repository"
 my:dnf_add_key https://download.sublimetext.com/sublimehq-rpm-pub.gpg
@@ -21,6 +22,9 @@ curl -sSL "https://packagecontrol.io/Package%20Control.sublime-package" -o "$pac
 
 mkdir -p "$(dirname "$package_control_config_file")"
 my:link_file "$ASSETS_DIR/dev_sublime--package-control.sublime-settings" "$package_control_config_file"
+
+my:step_begin "configure packages"
+my:link_file "$ASSETS_DIR/dev_sublime--sublimelinter.sublime-settings" "$sublime_linter_config_file"
 
 my:step_begin "install sublime merge"
 my:dnf_install sublime-merge
