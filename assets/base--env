@@ -53,6 +53,7 @@ export HISTFILE="$XDG_STATE_HOME/bash/history"
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
 export LESSHISTFILE=-
 export MIX_XDG=1
+export SPACEMACSDIR="$XDG_CONFIG_HOME/spacemacs"
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 
 # Path
