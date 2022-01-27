@@ -6,12 +6,14 @@ PROFILE_NAME='default-release'
 PROFILE_DIR="$([ -d "$HOME/.mozilla/firefox" ] && find "$HOME/.mozilla/firefox" -maxdepth 1 -name "*.$PROFILE_NAME" | head -n 1)"
 
 if [[ ! -d "$PROFILE_DIR" ]]; then
-    echo 'no firefox profile available, skipping'
+    my:echo_error 'no firefox profile available, skipping'
     exit 0
 fi
 
-my:step_begin "close firefox"
-pkill -f firefox
+if [[ -e "$PROFILE_DIR/cookies.sqlite-wal" ]]; then
+    my:echo_error 'firefox is running, skipping'
+    exit 0
+fi
 
 my:step_begin "config firefox"
 my:link_file "$ASSETS_DIR/browser_firefox--search.json.mozlz4" "$PROFILE_DIR/search.json.mozlz4"
