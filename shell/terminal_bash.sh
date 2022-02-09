@@ -4,7 +4,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
 my:step_begin "move history file"
 rm -f "$HOME/.bash_history"
-mkdir -p "$XDG_STATE_HOME"/bash
+mkdir -p "$XDG_STATE_HOME/bash"
 
 my:step_begin "add starship initialization"
 sed -Ei "s|~/.bashrc.d|$XDG_CONFIG_HOME/bashrc.d|" "$HOME/.bashrc"
