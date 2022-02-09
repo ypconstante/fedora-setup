@@ -10,7 +10,7 @@ if [[ ! -d "$PROFILE_DIR" ]]; then
     exit 0
 fi
 
-if [[ -e "$PROFILE_DIR/cookies.sqlite-wal" ]]; then
+if pgrep GeckoMain > /dev/null; then
     my:echo_error 'firefox is running, skipping'
     exit 0
 fi
