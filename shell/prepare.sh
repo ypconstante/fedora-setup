@@ -22,7 +22,7 @@ sudo flatpak update -y
 
 my:step_begin "update dnf packages"
 sudo dnf autoremove -y -q
-sudo dnf update -y
+sudo dnf update -y --refresh
 
 my:step_begin "update firmwares"
 my:dnf_install fwupd
