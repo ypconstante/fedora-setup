@@ -2,8 +2,8 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
-my:step_begin "install vulkan"
-my:dnf_install \
+my:step-begin "install vulkan"
+my:dnf-install \
     mesa-vulkan-drivers \
     mesa-vulkan-drivers.i686 \
     vulkan \
@@ -11,8 +11,8 @@ my:dnf_install \
     vulkan-loader.i686 \
     vulkan-tools
 
-my:step_begin "enable vaapi"
-my:dnf_install \
+my:step-begin "enable vaapi"
+my:dnf-install \
     ffmpeg \
     libva \
     libva-vdpau-driver \
@@ -20,22 +20,22 @@ my:dnf_install \
     vdpauinfo
 
 
-my:step_begin "install gpu viewer"
-my:flatpak_install io.github.arunsivaramanneo.GPUViewer
+my:step-begin "install gpu viewer"
+my:flatpak-install io.github.arunsivaramanneo.GPUViewer
 
 intel_gpus=$(lspci | grep -i VGA | grep -i Intel)
 if [ -n "$intel_gpus" ]; then
 
-    my:step_begin "instal and configure intel"
-    my:dnf_install intel-media-driver
+    my:step-begin "instal and configure intel"
+    my:dnf-install intel-media-driver
 fi
 
 nvidia_gpus=$(lspci | grep -i VGA | grep -i NVIDIA)
 if [ -n "$nvidia_gpus" ]; then
 
-    my:step_begin "install and configure nvidia"
+    my:step-begin "install and configure nvidia"
     # https://rpmfusion.org/Howto/NVIDIA#Installing_the_drivers
-    my:dnf_install \
+    my:dnf-install \
         akmod-nvidia \
         xorg-x11-drv-nvidia-cuda \
         xorg-x11-drv-nvidia-cuda-libs \
@@ -44,6 +44,6 @@ if [ -n "$nvidia_gpus" ]; then
         xorg-x11-drv-nvidia-power
     sudo systemctl enable nvidia-suspend nvidia-resume nvidia-hibernate
 
-    my:dnf_install \
+    my:dnf-install \
         nv-codec-headers
 fi

@@ -2,16 +2,16 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
-my:step_begin "install telegram"
-my:flatpak_install org.telegram.desktop
+my:step-begin "install telegram"
+my:flatpak-install org.telegram.desktop
 
 
 SLACK_APP_NAME=com.slack.Slack
 
-my:step_begin "install slack"
-my:flatpak_install $SLACK_APP_NAME
+my:step-begin "install slack"
+my:flatpak-install $SLACK_APP_NAME
 
-my:step_begin "configure slack"
+my:step-begin "configure slack"
 flatpak override --user $SLACK_APP_NAME --reset
 flatpak override --user $SLACK_APP_NAME \
     --nofilesystem=xdg-documents \
@@ -22,10 +22,10 @@ flatpak override --user $SLACK_APP_NAME \
 
 ZOOM_APP_NAME=us.zoom.Zoom
 
-my:step_begin "install zoom"
-my:flatpak_install $ZOOM_APP_NAME
+my:step-begin "install zoom"
+my:flatpak-install $ZOOM_APP_NAME
 
-my:step_begin "configure zoom"
+my:step-begin "configure zoom"
 flatpak override --user $ZOOM_APP_NAME --reset
 flatpak override --user $ZOOM_APP_NAME \
     --nofilesystem=~/.zoom \

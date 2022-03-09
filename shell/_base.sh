@@ -36,13 +36,13 @@ source "$ASSETS_DIR/base--env"
 
 #################################### FILE #####################################
 
-my:append_to_file_if_not_contains() {
+my:append-to-file-if-not-contains() {
     local file="$1"
     local content="$2"
 
-    my:create_file "$file"
+    my:create-file "$file"
 
-    if ! my:file_contains_line "$file" "$content"; then
+    if ! my:file-contains-line "$file" "$content"; then
         if [ -w "$file" ]; then
             echo "$content" | tee -a "$file" 1> /dev/null
         else
@@ -52,29 +52,29 @@ my:append_to_file_if_not_contains() {
 }
 
 
-my:create_file() {
+my:create-file() {
     local file="$1"
-    my:create_parent_dirs "${file}"
+    my:create-parent-dirs "${file}"
     touch "$file" 2> /dev/null || sudo touch "$file"
 }
 
-my:create_parent_dirs() {
+my:create-parent-dirs() {
     local file="$1"
     local parents=$(dirname "${file}")
     mkdir -p "${parents}" 2> /dev/null || sudo mkdir -p "${parents}"
 }
 
-my:file_contains_line() {
+my:file-contains-line() {
     local file="$1"
     local content="$2"
     grep -Fxq "$content" "$file" 2> /dev/null || sudo grep -Fxq "$content" "$file"
 }
 
-my:link_file() {
+my:link-file() {
     local FROM="$1"
     local TO="$2"
 
-    my:create_parent_dirs "$TO"
+    my:create-parent-dirs "$TO"
 
     ln -f "$FROM" "$TO" \
         || cp "$FROM" "$TO" 2> /dev/null \
@@ -85,18 +85,18 @@ my:copy-file() {
     local FROM="$1"
     local TO="$2"
 
-    my:create_parent_dirs "$TO"
+    my:create-parent-dirs "$TO"
 
     cp "$FROM" "$TO" 2> /dev/null \
         || sudo cp "$FROM" "$TO" 2> /dev/null \
         || sudo cp "$FROM" "$TO"
 }
 
-my:run_files() {
+my:run-files() {
     sort -zn | xargs -0 -I '{}' bash '{}' \;
 }
 
-my:wait_file() {
+my:wait-file() {
     local file="$1"
     local time_waiting=0;
 
@@ -105,12 +105,12 @@ my:wait_file() {
         ((time_waiting++))
         if [[ $time_waiting -gt 20 ]]; then
             echo ''
-            my:echo_error 'File not created after 20 seconds'
+            my:echo-error 'File not created after 20 seconds'
             return 1
         elif [[ $time_waiting -eq 2 ]]; then
-            my:echo_without_line_break "Waiting for file '$file' to be created "
+            my:echo-without-line-break "Waiting for file '$file' to be created "
         elif [[ $time_waiting -gt 2 ]]; then
-            my:echo_without_line_break "#"
+            my:echo-without-line-break "#"
         fi
     done
 
@@ -124,33 +124,33 @@ my:wait_file() {
 ################################### INSTALL ###################################
 
 # my:dnf
-my:dnf_install() {
+my:dnf-install() {
     sudo dnf install -y -q "$@"
 }
 
-my:dnf_add_key() {
+my:dnf-add-key() {
     local url="$1"
     sudo rpm -v --import "$url"
 }
 
-my:dnf_add_repo() {
+my:dnf-add-repo() {
     local url="$1"
     sudo dnf config-manager --add-repo "$url"
 }
 
-my:dnf_remove() {
+my:dnf-remove() {
     sudo dnf remove -y -q "$@"
 }
 
 # my:flatpak
-my:flatpak_install() {
+my:flatpak-install() {
     flatpak install -y flathub "$@"
     sleep 0.5
     echo ''
 }
 
 # my:asdf
-my:asdf_add_plugin() {
+my:asdf-add-plugin() {
     local plugin="$1"
 
     source "$ASDF_DIR/asdf.sh"
@@ -159,11 +159,11 @@ my:asdf_add_plugin() {
     asdf list-all "${plugin}" 1> /dev/null
 }
 
-my:asdf_install_and_set_global() {
-    my:toolbox-run my:asdf_install_and_set_global_local "$@"
+my:asdf-install-and-set-global() {
+    my:toolbox-run my:asdf-install-and-set-global-local "$@"
 }
 
-my:asdf_install_and_set_global_local() {
+my:asdf-install-and-set-global-local() {
     local plugin="$1"
     local version="$2"
 
@@ -173,7 +173,7 @@ my:asdf_install_and_set_global_local() {
     previous_dir="$PWD"
     cd /tmp
 
-    my:echo_substep "Installing version $version"
+    my:echo-substep "Installing version $version"
     asdf install "$plugin" "$version"
     asdf global "$plugin" "$version"
 
@@ -181,12 +181,12 @@ my:asdf_install_and_set_global_local() {
 }
 
 # my:git
-my:git_clone() {
+my:git-clone() {
     local REPOSITORY="$1"
     local DIRECTORY="$2"
 
     if [ -d "$DIRECTORY" ]; then
-        my:echo_substep "Updating repo '$DIRECTORY'"
+        my:echo-substep "Updating repo '$DIRECTORY'"
         git -C "$DIRECTORY" remote set-url origin "$REPOSITORY"
         local CURRENT_BRANCH=$(git -C "$DIRECTORY" symbolic-ref --short -q HEAD)
         if [ -n "$CURRENT_BRANCH" ]; then
@@ -212,70 +212,70 @@ my:toolbox-run() {
 }
 
 my:toolbox-dnf-install() {
-    my:toolbox-run my:dnf_install "$@"
+    my:toolbox-run my:dnf-install "$@"
 }
 
 #################################### PRINT #####################################
 
-# my:file_run
-my:file_run_begin() {
+# my:file-run
+my:file-run-begin() {
     local file="$1"
-    my:file_run_echo "FILE BEGIN: ${file}"
+    my:file-run-echo "FILE BEGIN: ${file}"
 }
 
-my:file_run_end() {
+my:file-run-end() {
     local file="$1"
     echo ''
-    my:file_run_echo "FILE END: ${file}"
+    my:file-run-echo "FILE END: ${file}"
     echo ''
 }
 
-my:file_run_echo() {
+my:file-run-echo() {
     local message="$1"
     echo "$(tput setab 4)$(tput setaf 0)${message}$(tput el)$(tput sgr0)"
 }
 
 # my:step
-my:step_begin() {
+my:step-begin() {
     local step="$1"
 
     if [ -z "${step-}" ]; then
-        my:echo_error 'step name not given'
+        my:echo-error 'step name not given'
     else
         echo ''
-        my:echo_step "step: ${step}"
+        my:echo-step "step: ${step}"
     fi
 }
 
 # my:echo
-my:echo_step() {
+my:echo-step() {
     local message="$1"
     echo "$(tput setab 7)$(tput setaf 0)${message}$(tput el)$(tput sgr0)"
 }
 
-my:echo_substep() {
+my:echo-substep() {
     local message="$1"
     echo "$(tput bold)$(tput setaf 4)${message}$(tput el)$(tput sgr0)"
 }
 
-my:echo_error() {
+my:echo-error() {
     local message="$1"
     echo "$(tput setab 1)$(tput setaf 0)${message}$(tput el)$(tput sgr0)"
 }
 
-my:echo_without_line_break() {
+my:echo-without-line-break() {
     local message="$1"
     echo -n "$message"
 }
 
 #################################### CHECK #####################################
 
-my:command_exists () {
+my:command-exists () {
     local command="$1"
     type "${command}" &> /dev/null
 }
 
-my:should_skip_file() {
+my:should-skip-file() {
     local path="$1"
     local filename=$(basename "$path")
 
@@ -292,15 +292,15 @@ my:should_skip_file() {
 ################################################################################
 
 if [ -n "$CURRENT_SCRIPT" ]; then
-    my:file_run_begin "$CURRENT_SCRIPT"
+    my:file-run-begin "$CURRENT_SCRIPT"
 
     function on_exit {
-        my:file_run_end "$CURRENT_SCRIPT"
+        my:file-run-end "$CURRENT_SCRIPT"
     }
 
     trap on_exit EXIT
 
-    skip_cause=$(my:should_skip_file "$CURRENT_SCRIPT")
+    skip_cause=$(my:should-skip-file "$CURRENT_SCRIPT")
     if [ -n "$skip_cause" ]; then
         echo "${skip_cause}, skipping"
         exit 0

@@ -2,10 +2,10 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
-my:step_begin "install dbeaver"
-my:flatpak_install io.dbeaver.DBeaverCommunity
+my:step-begin "install dbeaver"
+my:flatpak-install io.dbeaver.DBeaverCommunity
 
-my:step_begin "configure dbeaver"
+my:step-begin "configure dbeaver"
 flatpak override --user io.dbeaver.DBeaverCommunity --reset
 flatpak override --user io.dbeaver.DBeaverCommunity \
     --nofilesystem=home \

@@ -2,12 +2,12 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
-if ! my:command_exists gnome-terminal; then
+if ! my:command-exists gnome-terminal; then
     echo 'gnome-terminal not installed, skipping'
     exit 0
 fi
 
-my:step_begin "configure theme"
+my:step-begin "configure theme"
 dset() {
     local key="$1"
     local val="$2"
@@ -46,7 +46,7 @@ dset default-size-rows 40
 
 dconf write /org/gnome/terminal/legacy/default-show-menubar false
 
-my:step_begin "configure shortcuts"
+my:step-begin "configure shortcuts"
 dconf write /org/gnome/terminal/legacy/keybindings/new-tab "'<Primary>t'"
 dconf write /org/gnome/terminal/legacy/keybindings/new-window "'<Primary>n'"
 dconf write /org/gnome/terminal/legacy/keybindings/close-tab "'<Primary>w'"
@@ -58,6 +58,6 @@ dconf write /org/gnome/terminal/legacy/keybindings/find-clear "'<Primary>j'"
 dconf write /org/gnome/terminal/legacy/keybindings/next-tab "'<Primary>Tab'"
 dconf write /org/gnome/terminal/legacy/keybindings/prev-tab "'<Primary><Shift>Tab'"
 
-my:step_begin "use fish"
+my:step-begin "use fish"
 dset use-custom-command true
 dset custom-command "'$(command -v fish)'"

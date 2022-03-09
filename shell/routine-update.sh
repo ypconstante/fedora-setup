@@ -2,7 +2,7 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
-my:step_begin "update current repo"
+my:step-begin "update current repo"
 git pull
 
 ./prepare.sh

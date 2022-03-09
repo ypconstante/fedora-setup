@@ -2,17 +2,17 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
-my:step_begin "install toolbox"
-my:dnf_install toolbox
+my:step-begin "install toolbox"
+my:dnf-install toolbox
 
 if ! podman container exists "$TOOLBOX_CONTAINER"; then
-    my:step_begin "create '$TOOLBOX_CONTAINER' container"
+    my:step-begin "create '$TOOLBOX_CONTAINER' container"
     toolbox create -y "$TOOLBOX_CONTAINER"
 fi
 
 ./toolbox_update.sh
 
-my:step_begin "install toolbox container dependencies"
+my:step-begin "install toolbox container dependencies"
 my:toolbox-dnf-install \
     glibc-langpack-en \
     '@Development Tools' \

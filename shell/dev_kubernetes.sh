@@ -2,5 +2,5 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
-my:step_begin "install packages"
-my:dnf_install kubernetes-client
+my:step-begin "install packages"
+my:dnf-install kubernetes-client

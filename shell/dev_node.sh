@@ -2,15 +2,15 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
-my:step_begin "install node"
-my:asdf_add_plugin nodejs
-my:asdf_install_and_set_global nodejs latest:14
-my:asdf_install_and_set_global nodejs latest:16
+my:step-begin "install node"
+my:asdf-add-plugin nodejs
+my:asdf-install-and-set-global nodejs latest:14
+my:asdf-install-and-set-global nodejs latest:16
 
-my:step_begin "configure node"
-my:append_to_file_if_not_contains "$NPM_CONFIG_USERCONFIG" 'engine-strict = true'
+my:step-begin "configure node"
+my:append-to-file-if-not-contains "$NPM_CONFIG_USERCONFIG" 'engine-strict = true'
 corepack enable
 
-my:step_begin "install yarn"
-my:asdf_add_plugin yarn
-my:asdf_install_and_set_global yarn latest
+my:step-begin "install yarn"
+my:asdf-add-plugin yarn
+my:asdf-install-and-set-global yarn latest

@@ -2,6 +2,6 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
-my:step_begin "install go"
-my:asdf_add_plugin golang
-my:asdf_install_and_set_global golang latest
+my:step-begin "install go"
+my:asdf-add-plugin golang
+my:asdf-install-and-set-global golang latest

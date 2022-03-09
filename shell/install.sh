@@ -8,13 +8,13 @@ set -euxo pipefail
 
 read -r -p 'install id: ' os_install_id
 if [ -z "$os_install_id" ]; then
-    my:echo_error "os_install_id is mandatory"
+    my:echo-error "os_install_id is mandatory"
     exit 1
 fi
 
 read -r -p 'partition size: ' os_partition_size
 if [ -z "$os_partition_size" ]; then
-    my:echo_error "os_partition_size is mandatory"
+    my:echo-error "os_partition_size is mandatory"
     exit 1
 fi
 
@@ -35,7 +35,7 @@ if [ ! -e "/dev/${disk_name}" ]; then
 fi
 
 if [ ! -e "/dev/${disk_name}" ]; then
-    my:echo_error "disk not found"
+    my:echo-error "disk not found"
     exit 1
 fi
 

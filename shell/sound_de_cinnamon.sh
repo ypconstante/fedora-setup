@@ -2,7 +2,7 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
-my:step_begin "disable system sounds"
+my:step-begin "disable system sounds"
 dconf write /org/cinnamon/sounds/login-enabled false
 dconf write /org/cinnamon/sounds/logout-enabled false
 dconf write /org/cinnamon/sounds/switch-enabled false

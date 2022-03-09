@@ -2,4 +2,4 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/_base.sh"
 
-find . -name "sound_*.sh" -print0 | my:run_files
+find . -name "sound_*.sh" -print0 | my:run-files
